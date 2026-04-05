@@ -29,7 +29,10 @@
     "dev:stdio": "tsx index.ts",
     "inspector": "pnpm run build && mcp-inspector node dist/index.js",
     "watch": "tsc --watch",
-    "pack:mcpb": "pnpm install --shamefully-hoist && mcpb pack"
+    "pack:mcpb": "pnpm install --shamefully-hoist && mcpb pack",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "keywords": [
     "ai",
@@ -57,7 +60,9 @@
     "cross-env": "^10.1.0",
     "shx": "^0.4.0",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^2.0.0",
+    "@vitest/coverage-v8": "^2.0.0"
   },
   "engines": {
     "node": ">=18.0.0"

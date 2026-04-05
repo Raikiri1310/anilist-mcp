@@ -400,7 +400,7 @@ export const MediaFilterTypesSchema = z.object({
     .number()
     .optional()
     .describe("Filter by the media's popularity"),
-  source: MediaFormatSchema.optional().describe(
+  source: MediaSourceSchema.optional().describe(
     "Filter by the media's source type",
   ),
   countryOfOrigin: z

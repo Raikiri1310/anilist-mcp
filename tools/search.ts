@@ -6,6 +6,7 @@ import {
   ActivityFilterTypesSchema,
   MediaFilterTypesSchema,
 } from "../utils/schemas.js";
+import { searchMediaDirect } from "../utils/anilistGraphql.js";
 
 export function registerSearchTools(server: McpServer, anilist: AniList) {
   // anilist.searchEntry.activity()
@@ -105,9 +106,10 @@ Otherwise, request is likely to fail or return no results.`,
     },
     async ({ term, filter, page, amount }) => {
       try {
-        const results = await anilist.searchEntry.anime(
+        const results = await searchMediaDirect(
+          "ANIME",
           term,
-          filter,
+          filter as Record<string, unknown> | undefined,
           page,
           amount,
         );
@@ -212,9 +214,10 @@ Otherwise, request is likely to fail or return no results.`,
     },
     async ({ term, filter, page, amount }) => {
       try {
-        const results = await anilist.searchEntry.manga(
+        const results = await searchMediaDirect(
+          "MANGA",
           term,
-          filter,
+          filter as Record<string, unknown> | undefined,
           page,
           amount,
         );
