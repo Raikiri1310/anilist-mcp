@@ -8,6 +8,17 @@ import {
 } from "../utils/schemas.js";
 import { searchMediaDirect } from "../utils/anilistGraphql.js";
 
+// Filter fields spread directly as top-level params; 'type' and 'search' excluded
+// ('type' is enforced by the tool, 'search' is covered by 'term')
+const { type: _type, search: _search, ...MediaFilterFields } = MediaFilterTypesSchema.shape;
+
+function buildFilter(fields: Record<string, unknown>): Record<string, unknown> | undefined {
+  const filter = Object.fromEntries(
+    Object.entries(fields).filter(([, v]) => v !== undefined),
+  );
+  return Object.keys(filter).length ? filter : undefined;
+}
+
 export function registerSearchTools(server: McpServer, anilist: AniList) {
   // anilist.searchEntry.activity()
   server.tool(
@@ -67,27 +78,13 @@ export function registerSearchTools(server: McpServer, anilist: AniList) {
   // anilist.searchEntry.anime()
   server.tool(
     "search_anime",
-    "Search for anime with query term and filters",
+    "Search for anime. Pass filter fields directly as top-level parameters — no nested filter object.",
     {
       term: z
         .string()
         .optional()
-        .describe(
-          `Query term for finding anime (leave it as undefined when no query term specified.)
-Query term is used for searching with specific word or title in mind.
-
-You SHOULD not include things that can be found in the filter object, such as genre or tag.
-Those things should be included in the filter object instead.
-
-To check whether a user requested term should be considered as a query term or a filter term.
-It is recommended to use tools like 'get_genres' and 'get_media_tags' first.`,
-        ),
-      filter: MediaFilterTypesSchema.optional().describe(
-        `Filter object for searching anime.
-You MUST NOT include "{ "type": "ANIME" }" in the filter object. As it is already included in the API call.
-When no sorting method or any filter is specified, you SHOULD use the site default: "{ "sort": ["SEARCH_MATCH"] }".
-Otherwise, request is likely to fail or return no results.`,
-      ),
+        .describe("Title search query. Omit when filtering by season/year/etc without a title."),
+      ...MediaFilterFields,
       page: z
         .number()
         .optional()
@@ -104,12 +101,12 @@ Otherwise, request is likely to fail or return no results.`,
       readOnlyHint: true,
       openWorldHint: true,
     },
-    async ({ term, filter, page, amount }) => {
+    async ({ term, page, amount, ...filterFields }) => {
       try {
         const results = await searchMediaDirect(
           "ANIME",
           term,
-          filter as Record<string, unknown> | undefined,
+          buildFilter(filterFields as Record<string, unknown>),
           page,
           amount,
         );
@@ -175,27 +172,13 @@ Otherwise, request is likely to fail or return no results.`,
   // anilist.searchEntry.manga()
   server.tool(
     "search_manga",
-    "Search for manga with query term and filters",
+    "Search for manga. Pass filter fields directly as top-level parameters — no nested filter object.",
     {
       term: z
         .string()
         .optional()
-        .describe(
-          `Query term for finding manga (leave it as undefined when no query term specified.)
-Query term is used for searching with specific word or title in mind.
-
-You SHOULD not include things that can be found in the filter object, such as genre or tag.
-Those things should be included in the filter object instead.
-
-To check whether a user requested term should be considered as a query term or a filter term.
-It is recommended to use tools like 'get_genres' and 'get_media_tags' first.`,
-        ),
-      filter: MediaFilterTypesSchema.optional().describe(
-        `Filter object for searching manga.
-You MUST NOT include "{ "type": "MANGA" }" in the filter object. As it is already included in the API call.
-When no sorting method or any filter is specified, you SHOULD use the site default: "{ "sort": ["SEARCH_MATCH"] }".
-Otherwise, request is likely to fail or return no results.`,
-      ),
+        .describe("Title search query. Omit when filtering by season/year/etc without a title."),
+      ...MediaFilterFields,
       page: z
         .number()
         .optional()
@@ -212,12 +195,12 @@ Otherwise, request is likely to fail or return no results.`,
       readOnlyHint: true,
       openWorldHint: true,
     },
-    async ({ term, filter, page, amount }) => {
+    async ({ term, page, amount, ...filterFields }) => {
       try {
         const results = await searchMediaDirect(
           "MANGA",
           term,
-          filter as Record<string, unknown> | undefined,
+          buildFilter(filterFields as Record<string, unknown>),
           page,
           amount,
         );
