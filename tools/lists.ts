@@ -32,7 +32,10 @@ export function registerListsTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.lists.addEntry(id, options);
+        // startedAt/completedAt are optional in our schema (AniList doesn't
+        // require them), but the upstream lib's UpdateEntryOptions type
+        // still marks them required — cast to match actual runtime behavior.
+        const result = await anilist.lists.addEntry(id, options as any);
         return {
           content: [
             {
@@ -177,7 +180,9 @@ export function registerListsTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.lists.updateEntry(id, options);
+        // See addEntry above: startedAt/completedAt are intentionally
+        // optional in our schema despite the upstream lib's stricter type.
+        const result = await anilist.lists.updateEntry(id, options as any);
         return {
           content: [
             {

@@ -205,7 +205,13 @@ export const UserOptionsInputSchema = z.object({
 
 export const UpdateEntryOptionsSchema = z
   .object({
-    id: z.number().describe("The ID of the list entry"),
+    id: z
+      .number()
+      .optional()
+      .describe(
+        "The AniList list-entry ID to edit. Omit when adding a new entry " +
+          "(one is created automatically); required when updating an existing entry.",
+      ),
     mediaId: z.number().describe("The ID of the media to add"),
     status: EntryStatusSchema.describe("The status of the media on the list"),
     score: z.number().describe("The score given to the media"),
@@ -217,15 +223,20 @@ export const UpdateEntryOptionsSchema = z
     repeat: z.number().describe("Amount of times the media has been repeated"),
     priority: z.number().describe("Priority level of the media"),
     private: z.boolean().describe("Whether the entry should be private"),
-    notes: z.string().describe("Text notes about the media"),
+    notes: z
+      .string()
+      .optional()
+      .describe("Text notes about the media"),
     hiddenFromStatusLists: z
       .boolean()
       .describe("Whether the entry should be hidden from non-custom lists"),
     customLists: z
       .array(z.string())
+      .optional()
       .describe("Array of custom list names for the media"),
     advancedScores: z
       .array(z.number())
+      .optional()
       .describe("Advanced scores as an object"),
     startedAt: z
       .object({
@@ -233,6 +244,7 @@ export const UpdateEntryOptionsSchema = z
         month: z.number(),
         day: z.number(),
       })
+      .optional()
       .describe("When the user started the media"),
     completedAt: z
       .object({
@@ -240,6 +252,7 @@ export const UpdateEntryOptionsSchema = z
         month: z.number(),
         day: z.number(),
       })
+      .optional()
       .describe("When the user completed the media"),
   })
   .describe("Values to save with the entry");
