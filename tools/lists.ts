@@ -4,6 +4,7 @@ import type AniList from "@yuna0x0/anilist-node";
 import type { ConfigSchema } from "../utils/schemas.js";
 import { requireAuth } from "../utils/auth.js";
 import { UpdateEntryOptionsSchema } from "../utils/schemas.js";
+import { saveMediaListEntryDirect } from "../utils/anilistGraphql.js";
 
 export function registerListsTools(
   server: McpServer,
@@ -32,10 +33,17 @@ export function registerListsTools(
           return auth.errorResponse;
         }
 
-        // startedAt/completedAt are optional in our schema (AniList doesn't
-        // require them), but the upstream lib's UpdateEntryOptions type
-        // still marks them required — cast to match actual runtime behavior.
-        const result = await anilist.lists.addEntry(id, options as any);
+        // Direct GraphQL call, not anilist.lists.addEntry(): the vendored
+        // library's headerBuilder.js throws on any array/object value
+        // (customLists, advancedScores) other than startedAt/completedAt,
+        // and never quotes strings (breaking non-empty notes). See
+        // utils/anilistGraphql.ts's saveMediaListEntryDirect for details.
+        const result = await saveMediaListEntryDirect(
+          id,
+          "mediaId",
+          options,
+          config.anilistToken!,
+        );
         return {
           content: [
             {
@@ -180,9 +188,13 @@ export function registerListsTools(
           return auth.errorResponse;
         }
 
-        // See addEntry above: startedAt/completedAt are intentionally
-        // optional in our schema despite the upstream lib's stricter type.
-        const result = await anilist.lists.updateEntry(id, options as any);
+        // See addEntry above for why this bypasses anilist.lists.updateEntry.
+        const result = await saveMediaListEntryDirect(
+          id,
+          "id",
+          options,
+          config.anilistToken!,
+        );
         return {
           content: [
             {

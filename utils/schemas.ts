@@ -205,30 +205,47 @@ export const UserOptionsInputSchema = z.object({
 
 export const UpdateEntryOptionsSchema = z
   .object({
-    id: z
+    // Deliberately no `id`/`mediaId` here: both add_list_entry and
+    // update_list_entry take those as a separate top-level `id` argument
+    // (media id for add, list-entry id for update) and merge it in
+    // server-side, so a caller can never supply a stray/conflicting id
+    // inside options. See tools/lists.ts and utils/anilistGraphql.ts's
+    // saveMediaListEntryDirect().
+    status: EntryStatusSchema.optional().describe(
+      "The status of the media on the list",
+    ),
+    score: z.number().optional().describe("The score given to the media"),
+    scoreRaw: z
       .number()
       .optional()
-      .describe(
-        "The AniList list-entry ID to edit. Omit when adding a new entry " +
-          "(one is created automatically); required when updating an existing entry.",
-      ),
-    mediaId: z.number().describe("The ID of the media to add"),
-    status: EntryStatusSchema.describe("The status of the media on the list"),
-    score: z.number().describe("The score given to the media"),
-    scoreRaw: z.number().describe("The raw score in 100 point format"),
-    progress: z.number().describe("The amount of episodes/chapters consumed"),
+      .describe("The raw score in 100 point format"),
+    progress: z
+      .number()
+      .optional()
+      .describe("The amount of episodes/chapters consumed"),
     progressVolumes: z
       .number()
+      .optional()
       .describe("The amount of volumes read (manga only)"),
-    repeat: z.number().describe("Amount of times the media has been repeated"),
-    priority: z.number().describe("Priority level of the media"),
-    private: z.boolean().describe("Whether the entry should be private"),
+    repeat: z
+      .number()
+      .optional()
+      .describe("Amount of times the media has been repeated"),
+    priority: z
+      .number()
+      .optional()
+      .describe("Priority level of the media"),
+    private: z
+      .boolean()
+      .optional()
+      .describe("Whether the entry should be private"),
     notes: z
       .string()
       .optional()
       .describe("Text notes about the media"),
     hiddenFromStatusLists: z
       .boolean()
+      .optional()
       .describe("Whether the entry should be hidden from non-custom lists"),
     customLists: z
       .array(z.string())
@@ -237,7 +254,10 @@ export const UpdateEntryOptionsSchema = z
     advancedScores: z
       .array(z.number())
       .optional()
-      .describe("Advanced scores as an object"),
+      .describe(
+        "Per-category advanced scores, in the order configured in the " +
+          "user's mediaListOptions.animeList/mangaList.advancedScoring",
+      ),
     startedAt: z
       .object({
         year: z.number(),
@@ -417,10 +437,10 @@ export const MediaFilterTypesSchema = z.object({
     "Filter by the media's source type",
   ),
   countryOfOrigin: z
-    .number()
+    .string()
     .optional()
     .describe(
-      "Filter by the country where the media was created (ISO 3166-1 alpha-2 country code)",
+      "Filter by the country where the media was created (ISO 3166-1 alpha-2 country code, e.g. \"JP\")",
     ),
   search: z.string().optional().describe("Filter by search query"),
   id_not: z

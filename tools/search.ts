@@ -19,7 +19,11 @@ function buildFilter(fields: Record<string, unknown>): Record<string, unknown> |
   return Object.keys(filter).length ? filter : undefined;
 }
 
-export function registerSearchTools(server: McpServer, anilist: AniList) {
+export function registerSearchTools(
+  server: McpServer,
+  anilist: AniList,
+  config: z.infer<typeof ConfigSchema>,
+) {
   // anilist.searchEntry.activity()
   server.tool(
     "search_activity",
@@ -109,6 +113,7 @@ export function registerSearchTools(server: McpServer, anilist: AniList) {
           buildFilter(filterFields as Record<string, unknown>),
           page,
           amount,
+          config.anilistToken,
         );
         return {
           content: [
@@ -203,6 +208,7 @@ export function registerSearchTools(server: McpServer, anilist: AniList) {
           buildFilter(filterFields as Record<string, unknown>),
           page,
           amount,
+          config.anilistToken,
         );
         return {
           content: [

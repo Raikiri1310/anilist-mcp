@@ -46,6 +46,7 @@ export async function searchMediaDirect(
   filter: Record<string, unknown> | undefined,
   page: number,
   perPage: number,
+  token?: string,
 ): Promise<unknown> {
   const variables: Record<string, unknown> = { page, perPage, type };
   if (term) variables.search = term;
@@ -121,8 +122,10 @@ export async function searchMediaDirect(
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify({ query, variables }),
+    signal: AbortSignal.timeout(15_000),
   });
 
   if (!response.ok) {
@@ -143,4 +146,110 @@ export async function searchMediaDirect(
   }
 
   return json.data.Page;
+}
+
+// GraphQL types for each field SaveMediaListEntry accepts, confirmed via
+// live introspection against https://graphql.anilist.co (2026-07-09).
+// Deliberately excludes id/mediaId: callers supply those as a separate
+// top-level id argument (media id for add, list-entry id for update) that
+// gets merged in by saveMediaListEntryDirect's caller, not through options.
+const SAVE_ENTRY_GQL_TYPES: Record<string, string> = {
+  status: "MediaListStatus",
+  score: "Float",
+  scoreRaw: "Int",
+  progress: "Int",
+  progressVolumes: "Int",
+  repeat: "Int",
+  priority: "Int",
+  private: "Boolean",
+  notes: "String",
+  hiddenFromStatusLists: "Boolean",
+  customLists: "[String]",
+  advancedScores: "[Float]",
+  startedAt: "FuzzyDateInput",
+  completedAt: "FuzzyDateInput",
+};
+
+/**
+ * Create or update a list entry using a direct GraphQL call with real
+ * GraphQL variables, bypassing the anilist-node library's headerBuilder.js,
+ * which hand-concatenates mutation arguments into a query string: it throws
+ * on any array/object value other than startedAt/completedAt (so
+ * customLists/advancedScores always crash), and never quotes string values
+ * (so any non-empty `notes` produces invalid GraphQL syntax).
+ *
+ * @param id - media id (add) or list-entry id (update); see callers.
+ * @param idField - which GraphQL argument `id` maps to for this call.
+ * @param options - value fields to save; must not contain id/mediaId.
+ * @param token - AniList API token (required, this always requires login).
+ */
+export async function saveMediaListEntryDirect(
+  id: number,
+  idField: "id" | "mediaId",
+  options: Record<string, unknown>,
+  token: string,
+): Promise<unknown> {
+  const variables: Record<string, unknown> = { [idField]: id };
+  const activeKeys: string[] = [idField];
+
+  for (const [key, value] of Object.entries(options)) {
+    if (value === undefined || value === null) continue;
+    if (!SAVE_ENTRY_GQL_TYPES[key]) continue;
+
+    // JSON.stringify (below, in the fetch body) serializes objects/arrays/
+    // strings correctly on its own — unlike headerBuilder.js, there's no
+    // special-casing needed here for startedAt/completedAt.
+    variables[key] = value;
+    activeKeys.push(key);
+  }
+
+  const varDecls = [
+    `\$${idField}: Int`,
+    ...activeKeys
+      .filter((k) => k !== idField)
+      .map((k) => `\$${k}: ${SAVE_ENTRY_GQL_TYPES[k]}`),
+  ].join(", ");
+
+  const mutationArgs = activeKeys.map((k) => `${k}: \$${k}`).join(", ");
+
+  const query = `
+    mutation (${varDecls}) {
+      SaveMediaListEntry(${mutationArgs}) {
+        id mediaId status score progress progressVolumes repeat priority
+        private notes hiddenFromStatusLists customLists advancedScores
+        startedAt { year month day } completedAt { year month day }
+        updatedAt createdAt
+      }
+    }
+  `;
+
+  const response = await fetch(ANILIST_API, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ query, variables }),
+    signal: AbortSignal.timeout(15_000),
+  });
+
+  if (!response.ok) {
+    throw new Error(`AniList API error: ${response.status} ${response.statusText}`);
+  }
+
+  const json = (await response.json()) as {
+    data?: { SaveMediaListEntry: unknown };
+    errors?: Array<{ message: string }>;
+  };
+
+  if (json.errors?.length) {
+    throw new Error(`AniList GraphQL error: ${json.errors[0].message}`);
+  }
+
+  if (!json.data?.SaveMediaListEntry) {
+    throw new Error("Unexpected response from AniList API");
+  }
+
+  return json.data.SaveMediaListEntry;
 }
