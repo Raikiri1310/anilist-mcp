@@ -7,6 +7,7 @@ import {
   MediaFilterTypesSchema,
 } from "../utils/schemas.js";
 import { searchMediaDirect } from "../utils/anilistGraphql.js";
+import { MediaIncludeSchema, type MediaGroup } from "../utils/mediaSelection.js";
 
 // Filter fields spread directly as top-level params; 'type' and 'search' excluded
 // ('type' is enforced by the tool, 'search' is covered by 'term')
@@ -102,6 +103,7 @@ export function registerSearchTools(
         .optional()
         .describe("Title search query. Omit when filtering by season/year/etc without a title."),
       ...MediaFilterFields,
+      include: MediaIncludeSchema,
       page: z
         .number()
         .min(1)
@@ -121,7 +123,7 @@ export function registerSearchTools(
       readOnlyHint: true,
       openWorldHint: true,
     },
-    async ({ term, page, amount, ...filterFields }) => {
+    async ({ term, page, amount, include, ...filterFields }) => {
       try {
         const results = await searchMediaDirect(
           "ANIME",
@@ -129,6 +131,7 @@ export function registerSearchTools(
           buildFilter(filterFields as Record<string, unknown>),
           page,
           amount,
+          (include ?? []) as MediaGroup[],
           config.anilistToken,
         );
         return {
@@ -203,6 +206,7 @@ export function registerSearchTools(
         .optional()
         .describe("Title search query. Omit when filtering by season/year/etc without a title."),
       ...MediaFilterFields,
+      include: MediaIncludeSchema,
       page: z
         .number()
         .min(1)
@@ -222,7 +226,7 @@ export function registerSearchTools(
       readOnlyHint: true,
       openWorldHint: true,
     },
-    async ({ term, page, amount, ...filterFields }) => {
+    async ({ term, page, amount, include, ...filterFields }) => {
       try {
         const results = await searchMediaDirect(
           "MANGA",
@@ -230,6 +234,7 @@ export function registerSearchTools(
           buildFilter(filterFields as Record<string, unknown>),
           page,
           amount,
+          (include ?? []) as MediaGroup[],
           config.anilistToken,
         );
         return {

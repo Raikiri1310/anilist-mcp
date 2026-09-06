@@ -27,25 +27,25 @@ describe("searchMediaDirect authorization", () => {
   it("does NOT send Authorization for a public search, even with a token configured", async () => {
     // A stale token must not be able to break public search: AniList rejects
     // the whole request with 400 "Invalid token" when the header is present.
-    await searchMediaDirect("ANIME", "naruto", undefined, 1, 5, "some-token");
+    await searchMediaDirect("ANIME", "naruto", undefined, 1, 5, [], "some-token");
     expect(authHeaderOf()).toBeUndefined();
   });
 
   it("does NOT send Authorization for filters that work anonymously", async () => {
-    await searchMediaDirect("ANIME", undefined, { season: "SPRING", seasonYear: 2026 }, 1, 5, "some-token");
+    await searchMediaDirect("ANIME", undefined, { season: "SPRING", seasonYear: 2026 }, 1, 5, [], "some-token");
     expect(authHeaderOf()).toBeUndefined();
   });
 
   it("DOES send Authorization when the onList filter is used", async () => {
-    await searchMediaDirect("ANIME", undefined, { onList: true }, 1, 5, "some-token");
+    await searchMediaDirect("ANIME", undefined, { onList: true }, 1, 5, [], "some-token");
     expect(authHeaderOf()).toBe("Bearer some-token");
   });
 
   it("trims the token and ignores a whitespace-only one", async () => {
-    await searchMediaDirect("ANIME", undefined, { onList: true }, 1, 5, "  padded-token  ");
+    await searchMediaDirect("ANIME", undefined, { onList: true }, 1, 5, [], "  padded-token  ");
     expect(authHeaderOf()).toBe("Bearer padded-token");
 
-    await searchMediaDirect("ANIME", undefined, { onList: true }, 1, 5, "   ");
+    await searchMediaDirect("ANIME", undefined, { onList: true }, 1, 5, [], "   ");
     expect(authHeaderOf(1)).toBeUndefined();
   });
 });
