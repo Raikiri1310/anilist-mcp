@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "anilist-mcp",
   "display_name": "AniList MCP",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "AniList MCP server for accessing AniList API data",
   "author": {
     "name": "yuna0x0",
@@ -84,11 +84,11 @@
     },
     {
       "name": "get_anime",
-      "description": "Get detailed information about anime by AniList ID(s)"
+      "description": "Get information about anime by AniList ID(s). Returns core fields by default; use `include` to request extra field groups."
     },
     {
       "name": "get_manga",
-      "description": "Get detailed information about manga by AniList ID(s)"
+      "description": "Get information about manga by AniList ID(s). Returns core fields by default; use `include` to request extra field groups."
     },
     {
       "name": "favourite_anime",

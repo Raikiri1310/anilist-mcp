@@ -70,7 +70,7 @@ function parseConfig(req: Request) {
 function createServer({ config }: { config: z.infer<typeof ConfigSchema> }) {
   const server = new McpServer({
     name: "anilist-mcp",
-    version: "1.4.0",
+    version: "2.0.0",
   });
 
   // Two clients on purpose. anilist-node sends Authorization on every request

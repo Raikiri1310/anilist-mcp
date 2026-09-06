@@ -12,6 +12,35 @@ A Model Context Protocol (MCP) server that interfaces with the AniList API, allo
 - **Dual transport support**: Both HTTP and STDIO transports
 - **Cloud deployment ready**: Support Smithery and other platforms
 
+## Breaking changes in 2.0.0
+
+`get_anime` / `get_manga` no longer take `fullData`. They return core fields by
+default and accept `include` for extra field groups:
+
+    get_anime({ ids: 21 })                          // core only
+    get_anime({ ids: 21, include: ["characters"] }) // core + characters
+
+Both now return a uniform envelope — `{ media: [...], notFound: [...] }` — for
+one id or many. Ids AniList does not return are listed in `notFound` rather
+than throwing.
+
+`search_anime` / `search_manga` accept the same `include`, and return core
+fields only unless asked. They previously always returned tags, studios,
+external links, streaming episodes and rankings.
+
+Response shape changes:
+
+| Field | 1.x | 2.0 |
+|---|---|---|
+| `coverImage.large` | AniList's `extraLarge` | AniList's `large` (smaller image) |
+| `coverImage.small` | AniList's `medium` | removed; keys are `extraLarge`/`large`/`medium` |
+| `studios` | `[{id,name,isAnimationStudio}]` | `[{isMain, node:{...}}]`, opt-in |
+| `externalLinks` | `["https://..."]` | `[{url,site,type,language}]`, opt-in as `links` |
+| `status` / `source` | legacy v1 enum | versioned — corrects wrong values |
+
+`coverImage.large` is the one to watch: 1.x aliased AniList's `extraLarge` to
+`large`, so the same key now returns a smaller image without erroring.
+
 ## Requirements
 
 - Node.js 18+
