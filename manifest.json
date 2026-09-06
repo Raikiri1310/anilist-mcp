@@ -84,11 +84,11 @@
     },
     {
       "name": "get_anime",
-      "description": "Get detailed information about an anime by its AniList ID"
+      "description": "Get detailed information about anime by AniList ID(s)"
     },
     {
       "name": "get_manga",
-      "description": "Get detailed information about a manga by its AniList ID"
+      "description": "Get detailed information about manga by AniList ID(s)"
     },
     {
       "name": "favourite_anime",
@@ -100,11 +100,11 @@
     },
     {
       "name": "get_character",
-      "description": "Get information about a character by their AniList ID"
+      "description": "Get information about a character by their AniList ID or name"
     },
     {
       "name": "get_staff",
-      "description": "Get information about staff member by their AniList ID"
+      "description": "Get information about staff member by their AniList ID or name"
     },
     {
       "name": "favourite_character",
@@ -136,11 +136,11 @@
     },
     {
       "name": "search_anime",
-      "description": "Search for anime with query term and filters"
+      "description": "Search for anime. Pass filter fields directly as top-level parameters — no nested filter object."
     },
     {
       "name": "search_manga",
-      "description": "Search for manga with query term and filters"
+      "description": "Search for manga. Pass filter fields directly as top-level parameters — no nested filter object."
     },
     {
       "name": "search_character",
