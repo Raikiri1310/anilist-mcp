@@ -6,6 +6,7 @@ import {
   ActivityFilterTypesSchema,
   MediaFilterTypesSchema,
 } from "../utils/schemas.js";
+import { requireAuth } from "../utils/auth.js";
 import { searchMediaDirect } from "../utils/anilistGraphql.js";
 import { MediaIncludeSchema, type MediaGroup } from "../utils/mediaSelection.js";
 
@@ -125,6 +126,13 @@ export function registerSearchTools(
     },
     async ({ term, page, amount, include, ...filterFields }) => {
       try {
+        if (include?.includes("viewer")) {
+          const auth = requireAuth(config.anilistToken);
+          if (!auth.isAuthorized) {
+            return auth.errorResponse;
+          }
+        }
+
         const results = await searchMediaDirect(
           "ANIME",
           term,
@@ -228,6 +236,13 @@ export function registerSearchTools(
     },
     async ({ term, page, amount, include, ...filterFields }) => {
       try {
+        if (include?.includes("viewer")) {
+          const auth = requireAuth(config.anilistToken);
+          if (!auth.isAuthorized) {
+            return auth.errorResponse;
+          }
+        }
+
         const results = await searchMediaDirect(
           "MANGA",
           term,

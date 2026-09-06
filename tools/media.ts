@@ -29,6 +29,13 @@ export function registerMediaTools(
     },
     async ({ ids, include }) => {
       try {
+        if (include?.includes("viewer")) {
+          const auth = requireAuth(config.anilistToken);
+          if (!auth.isAuthorized) {
+            return auth.errorResponse;
+          }
+        }
+
         const idArray = Array.isArray(ids) ? ids : [ids];
         const result = await getMediaDirect(
           "ANIME",
@@ -151,6 +158,13 @@ export function registerMediaTools(
     },
     async ({ ids, include }) => {
       try {
+        if (include?.includes("viewer")) {
+          const auth = requireAuth(config.anilistToken);
+          if (!auth.isAuthorized) {
+            return auth.errorResponse;
+          }
+        }
+
         const idArray = Array.isArray(ids) ? ids : [ids];
         const result = await getMediaDirect(
           "MANGA",
