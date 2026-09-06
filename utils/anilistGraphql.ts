@@ -1,7 +1,11 @@
 const ANILIST_API = "https://graphql.anilist.co";
+const REQUEST_TIMEOUT_MS = 15_000;
 
-// GraphQL types for each field in MediaFilterTypesSchema
-const MEDIA_FILTER_GQL_TYPES: Record<string, string> = {
+// GraphQL types for each field in MediaFilterTypesSchema. Exported so the
+// suite can assert the two stay in step: searchMediaDirect only emits keys
+// present here, so a field added to the Zod schema alone would be accepted
+// and then silently dropped.
+export const MEDIA_FILTER_GQL_TYPES: Record<string, string> = {
   id: "Int", idMal: "Int",
   startDate: "FuzzyDateInt", endDate: "FuzzyDateInt",
   season: "MediaSeason", seasonYear: "Int",
@@ -9,7 +13,8 @@ const MEDIA_FILTER_GQL_TYPES: Record<string, string> = {
   episodes: "Int", duration: "Int", chapters: "Int", volumes: "Int",
   isAdult: "Boolean", genre: "String", tag: "String",
   minimumTagRank: "Int", tagCategory: "String", onList: "Boolean",
-  licensedBy: "String", averageScore: "Int", popularity: "Int",
+  licensedBy: "String", licensedById: "Int", isLicensed: "Boolean",
+  averageScore: "Int", popularity: "Int",
   source: "MediaSource", countryOfOrigin: "CountryCode", sort: "[MediaSort]",
   search: "String",
   id_not: "Int", id_in: "[Int]", id_not_in: "[Int]",
@@ -25,13 +30,76 @@ const MEDIA_FILTER_GQL_TYPES: Record<string, string> = {
   genre_in: "[String]", genre_not_in: "[String]",
   tag_in: "[String]", tag_not_in: "[String]",
   tagCategory_in: "[String]", tagCategory_not_in: "[String]",
-  licensedBy_in: "[String]",
+  licensedBy_in: "[String]", licensedById_in: "[Int]",
+  countryOfOrigin_in: "[CountryCode]", countryOfOrigin_not_in: "[CountryCode]",
   averageScore_not: "Int", averageScore_greater: "Int", averageScore_lesser: "Int",
   popularity_not: "Int", popularity_greater: "Int", popularity_lesser: "Int",
   source_in: "[MediaSource]",
 };
 
-function fuzzyDateToInt(date: { year: number | null; month: number | null; day: number | null }): number {
+// The only media filters AniList evaluates against a logged-in user. Every
+// other filter — and every field selected below — is fully public.
+const AUTH_REQUIRING_MEDIA_FILTERS = ["onList"];
+
+/**
+ * POST a query to AniList and return its `data` object.
+ *
+ * AniList reports auth and validation failures as a non-2xx status with a
+ * useful JSON body (e.g. 400 `{"errors":[{"message":"Invalid token"}]}`), so
+ * the body is read before falling back to the bare status line — otherwise
+ * every such failure reaches the caller as an undiagnosable "400 Bad Request".
+ */
+async function postGraphQL(
+  query: string,
+  variables: Record<string, unknown>,
+  token?: string,
+): Promise<Record<string, unknown>> {
+  const response = await fetch(ANILIST_API, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify({ query, variables }),
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+  });
+
+  let json:
+    | { data?: Record<string, unknown> | null; errors?: Array<{ message?: string }> }
+    | undefined;
+  try {
+    json = await response.json();
+  } catch {
+    json = undefined;
+  }
+
+  const apiMessage = json?.errors?.find((e) => e.message)?.message;
+
+  if (!response.ok) {
+    throw new Error(
+      apiMessage
+        ? `AniList API error (${response.status}): ${apiMessage}`
+        : `AniList API error: ${response.status} ${response.statusText}`,
+    );
+  }
+
+  if (apiMessage) {
+    throw new Error(`AniList GraphQL error: ${apiMessage}`);
+  }
+
+  if (!json?.data) {
+    throw new Error("Unexpected response from AniList API");
+  }
+
+  return json.data;
+}
+
+function fuzzyDateToInt(date: {
+  year?: number | null;
+  month?: number | null;
+  day?: number | null;
+}): number {
   return (date.year ?? 0) * 10000 + (date.month ?? 0) * 100 + (date.day ?? 0);
 }
 
@@ -62,9 +130,11 @@ export async function searchMediaDirect(
         (key === "startDate" || key === "endDate") &&
         typeof value === "object" &&
         value !== null &&
-        "year" in value
+        ("year" in value || "month" in value || "day" in value)
       ) {
-        variables[key] = fuzzyDateToInt(value as { year: number | null; month: number | null; day: number | null });
+        variables[key] = fuzzyDateToInt(
+          value as { year?: number | null; month?: number | null; day?: number | null },
+        );
       } else {
         variables[key] = value;
       }
@@ -97,11 +167,18 @@ export async function searchMediaDirect(
         media(${mediaArgs}) {
           id idMal
           title { romaji english native userPreferred }
-          format status description
+          format description
           startDate { year month day }
           endDate { year month day }
           season seasonYear episodes duration chapters volumes
-          countryOfOrigin source hashtag updatedAt
+          countryOfOrigin hashtag updatedAt
+          # status and source are versioned enums: unversioned, AniList
+          # answers with the legacy v1 set, which reports every HIATUS title
+          # as RELEASING and collapses WEB_NOVEL/COMIC/GAME/LIVE_ACTION/
+          # MULTIMEDIA_PROJECT/PICTURE_BOOK into OTHER. These are the highest
+          # versions AniList honours; higher numbers silently fall back to v1.
+          status(version: 2)
+          source(version: 3)
           coverImage { large medium color }
           bannerImage genres synonyms
           averageScore meanScore popularity favourites isAdult
@@ -117,35 +194,22 @@ export async function searchMediaDirect(
     }
   `;
 
-  const response = await fetch(ANILIST_API, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    },
-    body: JSON.stringify({ query, variables }),
-    signal: AbortSignal.timeout(15_000),
-  });
+  // Only authenticate when a filter actually needs a logged-in user. AniList
+  // rejects the entire request with 400 "Invalid token" whenever the header is
+  // present and stale, so sending it unconditionally lets one expired token
+  // take out public search as well.
+  const trimmedToken = token?.trim() || undefined;
+  const needsAuth = AUTH_REQUIRING_MEDIA_FILTERS.some(
+    (k) => filter?.[k] !== undefined && filter?.[k] !== null,
+  );
 
-  if (!response.ok) {
-    throw new Error(`AniList API error: ${response.status} ${response.statusText}`);
-  }
+  const data = await postGraphQL(query, variables, needsAuth ? trimmedToken : undefined);
 
-  const json = (await response.json()) as {
-    data?: { Page: unknown };
-    errors?: Array<{ message: string }>;
-  };
-
-  if (json.errors?.length) {
-    throw new Error(`AniList GraphQL error: ${json.errors[0].message}`);
-  }
-
-  if (!json.data?.Page) {
+  if (!data.Page) {
     throw new Error("Unexpected response from AniList API");
   }
 
-  return json.data.Page;
+  return data.Page;
 }
 
 // GraphQL types for each field SaveMediaListEntry accepts, confirmed via
@@ -196,7 +260,7 @@ export async function saveMediaListEntryDirect(
     if (value === undefined || value === null) continue;
     if (!SAVE_ENTRY_GQL_TYPES[key]) continue;
 
-    // JSON.stringify (below, in the fetch body) serializes objects/arrays/
+    // JSON.stringify (in postGraphQL's fetch body) serializes objects/arrays/
     // strings correctly on its own — unlike headerBuilder.js, there's no
     // special-casing needed here for startedAt/completedAt.
     variables[key] = value;
@@ -223,33 +287,11 @@ export async function saveMediaListEntryDirect(
     }
   `;
 
-  const response = await fetch(ANILIST_API, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ query, variables }),
-    signal: AbortSignal.timeout(15_000),
-  });
+  const data = await postGraphQL(query, variables, token.trim() || undefined);
 
-  if (!response.ok) {
-    throw new Error(`AniList API error: ${response.status} ${response.statusText}`);
-  }
-
-  const json = (await response.json()) as {
-    data?: { SaveMediaListEntry: unknown };
-    errors?: Array<{ message: string }>;
-  };
-
-  if (json.errors?.length) {
-    throw new Error(`AniList GraphQL error: ${json.errors[0].message}`);
-  }
-
-  if (!json.data?.SaveMediaListEntry) {
+  if (!data.SaveMediaListEntry) {
     throw new Error("Unexpected response from AniList API");
   }
 
-  return json.data.SaveMediaListEntry;
+  return data.SaveMediaListEntry;
 }

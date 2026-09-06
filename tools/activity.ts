@@ -7,6 +7,7 @@ import { requireAuth } from "../utils/auth.js";
 export function registerActivityTools(
   server: McpServer,
   anilist: AniList,
+  anilistAuthed: AniList,
   config: z.infer<typeof ConfigSchema>,
 ) {
   // anilist.activity.delete()
@@ -30,7 +31,7 @@ export function registerActivityTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.activity.delete(id);
+        const result = await anilistAuthed.activity.delete(id);
         return {
           content: [
             {
@@ -90,14 +91,17 @@ export function registerActivityTools(
       user: z.number().describe("The user's AniList ID"),
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("The page number to display"),
       perPage: z
         .number()
+        .min(1)
+        .max(50)
         .optional()
         .default(25)
-        .describe("How many entries to display on one page (max 25)"),
+        .describe("How many entries to display on one page (max 50)"),
     },
     {
       title: "Get a User's AniList Activities",
@@ -128,7 +132,7 @@ export function registerActivityTools(
     },
   );
 
-  // anilist.activity.postMessage()
+  // anilistAuthed.activity.postMessage()
   server.tool(
     "post_message_activity",
     "[Requires Login] Post a new message activity or update an existing one",
@@ -161,7 +165,7 @@ export function registerActivityTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.activity.postMessage(
+        const result = await anilistAuthed.activity.postMessage(
           text,
           recipientId,
           isPrivate,
@@ -184,7 +188,7 @@ export function registerActivityTools(
     },
   );
 
-  // anilist.activity.postText()
+  // anilistAuthed.activity.postText()
   server.tool(
     "post_text_activity",
     "[Requires Login] Post a new text activity or update an existing one",
@@ -209,7 +213,7 @@ export function registerActivityTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.activity.postText(text, id);
+        const result = await anilistAuthed.activity.postText(text, id);
         return {
           content: [
             {

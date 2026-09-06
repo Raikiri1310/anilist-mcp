@@ -64,11 +64,11 @@ export interface FilteredMediaEntry {
   popularity: number;
   favourites: number;
   isAdult: boolean;
-  nextAiringEpisode?: Array<{
+  nextAiringEpisode?: {
     airingAt: number;
     timeUntilAiring: number;
     episode: number;
-  }>;
+  };
   siteUrl: string;
   tags?: Array<{
     id: number;
@@ -140,15 +140,22 @@ function filterSingleMedia(media: AnimeEntry | MangaEntry): FilteredMediaEntry {
     filtered.volumes = media.volumes;
   }
 
-  // Include nextAiringEpisode for anime
-  if (media.nextAiringEpisode && Array.isArray(media.nextAiringEpisode)) {
-    filtered.nextAiringEpisode = (media.nextAiringEpisode as AiringEntry[])
-      .slice(0, 1) // Only include the next airing episode
-      .map((airing) => ({
-        airingAt: airing.airingAt,
-        timeUntilAiring: airing.timeUntilAiring,
-        episode: airing.episode,
-      }));
+  // Include nextAiringEpisode for anime. AniList returns this as a single
+  // object; anilist-node's .d.ts declares AiringEntry[], which is wrong —
+  // guarding on Array.isArray() dropped the field on every airing show.
+  // Both shapes are accepted so a library type fix can't silently break it.
+  const nextAiring = media.nextAiringEpisode as
+    | AiringEntry
+    | AiringEntry[]
+    | null
+    | undefined;
+  const nextEpisode = Array.isArray(nextAiring) ? nextAiring[0] : nextAiring;
+  if (nextEpisode) {
+    filtered.nextAiringEpisode = {
+      airingAt: nextEpisode.airingAt,
+      timeUntilAiring: nextEpisode.timeUntilAiring,
+      episode: nextEpisode.episode,
+    };
   }
 
   // Include limited tags (top 5 by relevance)

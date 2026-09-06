@@ -4,10 +4,17 @@ import type AniList from "@yuna0x0/anilist-node";
 import type { ConfigSchema } from "../utils/schemas.js";
 import { requireAuth } from "../utils/auth.js";
 import { filterMedia, type FilteredMediaEntry } from "../utils/mediaFilter.js";
+import { mapWithConcurrency } from "../utils/concurrency.js";
+
+// AniList is degraded to 30 requests/minute and burst-limits on top of
+// that; tripping either locks the whole server out for a minute. An
+// unbounded Promise.all over a long id list did exactly that.
+const MAX_PARALLEL_MEDIA_REQUESTS = 3;
 
 export function registerMediaTools(
   server: McpServer,
   anilist: AniList,
+  anilistAuthed: AniList,
   config: z.infer<typeof ConfigSchema>,
 ) {
   // anilist.media.anime()
@@ -34,8 +41,10 @@ export function registerMediaTools(
     async ({ ids, fullData }) => {
       try {
         const idArray = Array.isArray(ids) ? ids : [ids];
-        const results = await Promise.all(
-          idArray.map((id) => anilist.media.anime(id)),
+        const results = await mapWithConcurrency(
+          idArray,
+          MAX_PARALLEL_MEDIA_REQUESTS,
+          (id) => anilist.media.anime(id),
         );
 
         // Filter results unless fullData is explicitly requested
@@ -86,7 +95,7 @@ export function registerMediaTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.media.favouriteAnime(id);
+        const result = await anilistAuthed.media.favouriteAnime(id);
         return {
           content: [
             {
@@ -129,7 +138,7 @@ export function registerMediaTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.media.favouriteManga(id);
+        const result = await anilistAuthed.media.favouriteManga(id);
         return {
           content: [
             {
@@ -173,8 +182,10 @@ export function registerMediaTools(
     async ({ ids, fullData }) => {
       try {
         const idArray = Array.isArray(ids) ? ids : [ids];
-        const results = await Promise.all(
-          idArray.map((id) => anilist.media.manga(id)),
+        const results = await mapWithConcurrency(
+          idArray,
+          MAX_PARALLEL_MEDIA_REQUESTS,
+          (id) => anilist.media.manga(id),
         );
 
         // Filter results unless fullData is explicitly requested

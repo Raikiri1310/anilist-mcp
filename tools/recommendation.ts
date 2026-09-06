@@ -47,14 +47,17 @@ export function registerRecommendationTools(
       mediaID: z.number().describe("The AniList media ID"),
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("Target a specific page number for recommendations"),
       perPage: z
         .number()
+        .min(1)
+        .max(50)
         .optional()
         .default(25)
-        .describe("Limit the page amount (max 25 per AniList limits)"),
+        .describe("Limit the page amount (max 50 per AniList limits)"),
     },
     {
       title: "Get AniList Recommendations for Media",

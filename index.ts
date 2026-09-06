@@ -28,6 +28,25 @@ app.use(
 
 app.use(express.json());
 
+// Opt-in DNS-rebinding / Origin validation. The MCP spec expects locally bound
+// HTTP servers to validate Origin: without it a web page the user visits can
+// drive this server, and when ANILIST_TOKEN is set server-side it does so as
+// the operator's AniList account. Left off unless configured so existing
+// deployments (Smithery and friends) are unaffected.
+const allowedHosts = splitEnvList(process.env.ALLOWED_HOSTS);
+const allowedOrigins = splitEnvList(process.env.ALLOWED_ORIGINS);
+const enableDnsRebindingProtection =
+  allowedHosts.length > 0 || allowedOrigins.length > 0;
+
+function splitEnvList(value: string | undefined): string[] {
+  return (
+    value
+      ?.split(",")
+      .map((entry) => entry.trim())
+      .filter(Boolean) ?? []
+  );
+}
+
 // Parse configuration from header or query parameters (for Smithery)
 function parseConfig(req: Request) {
   const anilistTokenHeader = req.headers[ANILIST_TOKEN_HEADER.toLowerCase()];
@@ -54,11 +73,21 @@ function createServer({ config }: { config: z.infer<typeof ConfigSchema> }) {
     version: "1.4.0",
   });
 
-  // Initialize AniList client with token from config or environment
-  const anilist = new AniList(config.anilistToken);
+  // Two clients on purpose. anilist-node sends Authorization on every request
+  // once constructed with a token, and AniList rejects the whole request with
+  // 400 "Invalid token" when that token is stale — which took out every public
+  // read tool, not just the authenticated ones. Public reads therefore go
+  // through an anonymous client and cannot be broken by a bad token; only the
+  // [Requires Login] tools use the authenticated one, and they already gate on
+  // requireAuth(). The only thing lost is that get_anime/get_manga with
+  // fullData: true no longer carry the viewer's own mediaListEntry/isFavourite.
+  const anilist = new AniList();
+  const anilistAuthed = config.anilistToken
+    ? new AniList(config.anilistToken)
+    : anilist;
 
   // Register all tools
-  registerAllTools(server, anilist, config);
+  registerAllTools(server, anilist, anilistAuthed, config);
 
   return server;
 }
@@ -77,6 +106,13 @@ app.post("/mcp", async (req: Request, res: Response) => {
     const server = createServer({ config });
     const transport = new StreamableHTTPServerTransport({
       sessionIdGenerator: undefined,
+      ...(enableDnsRebindingProtection
+        ? {
+            enableDnsRebindingProtection: true,
+            ...(allowedHosts.length ? { allowedHosts } : {}),
+            ...(allowedOrigins.length ? { allowedOrigins } : {}),
+          }
+        : {}),
     });
 
     // Clean up on request close

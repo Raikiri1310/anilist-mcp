@@ -7,6 +7,7 @@ import { requireAuth } from "../utils/auth.js";
 export function registerMiscTools(
   server: McpServer,
   anilist: AniList,
+  anilistAuthed: AniList,
   config: z.infer<typeof ConfigSchema>,
 ) {
   // anilist.favouriteStudio()
@@ -32,7 +33,7 @@ export function registerMiscTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.favouriteStudio(id);
+        const result = await anilistAuthed.favouriteStudio(id);
         return {
           content: [
             {

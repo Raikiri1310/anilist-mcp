@@ -7,6 +7,7 @@ import { requireAuth } from "../utils/auth.js";
 export function registerThreadTools(
   server: McpServer,
   anilist: AniList,
+  anilistAuthed: AniList,
   config: z.infer<typeof ConfigSchema>,
 ) {
   // anilist.thread.delete()
@@ -30,7 +31,7 @@ export function registerThreadTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.thread.delete(id);
+        const result = await anilistAuthed.thread.delete(id);
         return {
           content: [
             {
@@ -88,9 +89,11 @@ export function registerThreadTools(
     "Get comments for a specific thread",
     {
       id: z.number().describe("The AniList thread ID"),
-      page: z.number().optional().default(1).describe("The page number"),
+      page: z.number().min(1).optional().default(1).describe("The page number"),
       perPage: z
         .number()
+        .min(1)
+        .max(50)
         .optional()
         .default(25)
         .describe("How many comments per page"),
