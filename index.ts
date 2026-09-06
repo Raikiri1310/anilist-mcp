@@ -79,8 +79,10 @@ function createServer({ config }: { config: z.infer<typeof ConfigSchema> }) {
   // read tool, not just the authenticated ones. Public reads therefore go
   // through an anonymous client and cannot be broken by a bad token; only the
   // [Requires Login] tools use the authenticated one, and they already gate on
-  // requireAuth(). The only thing lost is that get_anime/get_manga with
-  // fullData: true no longer carry the viewer's own mediaListEntry/isFavourite.
+  // requireAuth(). get_anime/get_manga bypass both clients — they call
+  // getMediaDirect with config.anilistToken directly, which is only sent to
+  // AniList when `include` contains "viewer", so a stale token can't break
+  // them either.
   const anilist = new AniList();
   const anilistAuthed = config.anilistToken
     ? new AniList(config.anilistToken)

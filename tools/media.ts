@@ -3,13 +3,8 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type AniList from "@yuna0x0/anilist-node";
 import type { ConfigSchema } from "../utils/schemas.js";
 import { requireAuth } from "../utils/auth.js";
-import { filterMedia, type FilteredMediaEntry } from "../utils/mediaFilter.js";
-import { mapWithConcurrency } from "../utils/concurrency.js";
-
-// AniList is degraded to 30 requests/minute and burst-limits on top of
-// that; tripping either locks the whole server out for a minute. An
-// unbounded Promise.all over a long id list did exactly that.
-const MAX_PARALLEL_MEDIA_REQUESTS = 3;
+import { getMediaDirect } from "../utils/anilistGraphql.js";
+import { MediaIncludeSchema, type MediaGroup } from "../utils/mediaSelection.js";
 
 export function registerMediaTools(
   server: McpServer,
@@ -17,51 +12,32 @@ export function registerMediaTools(
   anilistAuthed: AniList,
   config: z.infer<typeof ConfigSchema>,
 ) {
-  // anilist.media.anime()
   server.tool(
     "get_anime",
-    "Get detailed information about anime by AniList ID(s)",
+    "Get information about anime by AniList ID(s). Returns core fields by " +
+      "default; use `include` to request extra field groups.",
     {
       ids: z
-        .union([z.number(), z.array(z.number())])
-        .describe("The AniList ID or array of IDs of the anime"),
-      fullData: z
-        .boolean()
-        .optional()
-        .default(false)
-        .describe(
-          "Set to true to get full unfiltered data (may be very large). Default is false to return only essential fields.",
-        ),
+        .union([z.number(), z.array(z.number()).min(1).max(50)])
+        .describe("The AniList ID or array of IDs of the anime (max 50)"),
+      include: MediaIncludeSchema,
     },
     {
       title: "Get Anime Details",
       readOnlyHint: true,
       openWorldHint: true,
     },
-    async ({ ids, fullData }) => {
+    async ({ ids, include }) => {
       try {
         const idArray = Array.isArray(ids) ? ids : [ids];
-        const results = await mapWithConcurrency(
+        const result = await getMediaDirect(
+          "ANIME",
           idArray,
-          MAX_PARALLEL_MEDIA_REQUESTS,
-          (id) => anilist.media.anime(id),
+          (include ?? []) as MediaGroup[],
+          config.anilistToken,
         );
-
-        // Filter results unless fullData is explicitly requested
-        const filteredResults = fullData ? results : filterMedia(results);
-
-        // Return single object if single ID was provided, array if multiple
-        const res = Array.isArray(ids)
-          ? filteredResults
-          : (filteredResults as FilteredMediaEntry[])[0];
-
         return {
-          content: [
-            {
-              type: "text",
-              text: JSON.stringify(res, null, 2),
-            },
-          ],
+          content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
         };
       } catch (error: any) {
         return {
@@ -158,51 +134,32 @@ export function registerMediaTools(
     },
   );
 
-  // anilist.media.manga()
   server.tool(
     "get_manga",
-    "Get detailed information about manga by AniList ID(s)",
+    "Get information about manga by AniList ID(s). Returns core fields by " +
+      "default; use `include` to request extra field groups.",
     {
       ids: z
-        .union([z.number(), z.array(z.number())])
-        .describe("The AniList ID or array of IDs of the manga"),
-      fullData: z
-        .boolean()
-        .optional()
-        .default(false)
-        .describe(
-          "Set to true to get full unfiltered data (may be very large). Default is false to return only essential fields.",
-        ),
+        .union([z.number(), z.array(z.number()).min(1).max(50)])
+        .describe("The AniList ID or array of IDs of the manga (max 50)"),
+      include: MediaIncludeSchema,
     },
     {
       title: "Get Manga Details",
       readOnlyHint: true,
       openWorldHint: true,
     },
-    async ({ ids, fullData }) => {
+    async ({ ids, include }) => {
       try {
         const idArray = Array.isArray(ids) ? ids : [ids];
-        const results = await mapWithConcurrency(
+        const result = await getMediaDirect(
+          "MANGA",
           idArray,
-          MAX_PARALLEL_MEDIA_REQUESTS,
-          (id) => anilist.media.manga(id),
+          (include ?? []) as MediaGroup[],
+          config.anilistToken,
         );
-
-        // Filter results unless fullData is explicitly requested
-        const filteredResults = fullData ? results : filterMedia(results);
-
-        // Return single object if single ID was provided, array if multiple
-        const res = Array.isArray(ids)
-          ? filteredResults
-          : (filteredResults as FilteredMediaEntry[])[0];
-
         return {
-          content: [
-            {
-              type: "text",
-              text: JSON.stringify(res, null, 2),
-            },
-          ],
+          content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
         };
       } catch (error: any) {
         return {
