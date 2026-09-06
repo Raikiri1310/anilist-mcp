@@ -33,13 +33,14 @@ Response shape changes:
 | Field | 1.x | 2.0 |
 |---|---|---|
 | `coverImage.large` | AniList's `extraLarge` | AniList's `large` (smaller image) |
+| `coverImage.medium` | AniList's `large` | AniList's `medium` (smaller image) |
 | `coverImage.small` | AniList's `medium` | removed; keys are `extraLarge`/`large`/`medium` |
-| `studios` | `[{id,name,isAnimationStudio}]` | `[{isMain, node:{...}}]`, opt-in |
+| `studios` | `[{id,name,isAnimationStudio}]` (anime only) | `[{isMain, node:{...}}]`, opt-in |
 | `externalLinks` | `["https://..."]` | `[{url,site,type,language}]`, opt-in as `links` |
 | `status` / `source` | legacy v1 enum | versioned — corrects wrong values |
 
-`coverImage.large` is the one to watch: 1.x aliased AniList's `extraLarge` to
-`large`, so the same key now returns a smaller image without erroring.
+Both `coverImage.large` and `coverImage.medium` shifted down by one size: 1.x
+aliased every image key up by one notch, so the same keys now return smaller images.
 
 ## Requirements
 
