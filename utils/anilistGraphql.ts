@@ -1,41 +1,12 @@
+import { MEDIA_FILTER_GQL_TYPES } from "./schemas.generated.js";
+
 const ANILIST_API = "https://graphql.anilist.co";
 const REQUEST_TIMEOUT_MS = 15_000;
 
-// GraphQL types for each field in MediaFilterTypesSchema. Exported so the
-// suite can assert the two stay in step: searchMediaDirect only emits keys
-// present here, so a field added to the Zod schema alone would be accepted
-// and then silently dropped.
-export const MEDIA_FILTER_GQL_TYPES: Record<string, string> = {
-  id: "Int", idMal: "Int",
-  startDate: "FuzzyDateInt", endDate: "FuzzyDateInt",
-  season: "MediaSeason", seasonYear: "Int",
-  format: "MediaFormat", status: "MediaStatus",
-  episodes: "Int", duration: "Int", chapters: "Int", volumes: "Int",
-  isAdult: "Boolean", genre: "String", tag: "String",
-  minimumTagRank: "Int", tagCategory: "String", onList: "Boolean",
-  licensedBy: "String", licensedById: "Int", isLicensed: "Boolean",
-  averageScore: "Int", popularity: "Int",
-  source: "MediaSource", countryOfOrigin: "CountryCode", sort: "[MediaSort]",
-  search: "String",
-  id_not: "Int", id_in: "[Int]", id_not_in: "[Int]",
-  idMal_not: "Int", idMal_in: "[Int]", idMal_not_in: "[Int]",
-  startDate_greater: "FuzzyDateInt", startDate_lesser: "FuzzyDateInt", startDate_like: "String",
-  endDate_greater: "FuzzyDateInt", endDate_lesser: "FuzzyDateInt", endDate_like: "String",
-  format_in: "[MediaFormat]", format_not: "MediaFormat", format_not_in: "[MediaFormat]",
-  status_in: "[MediaStatus]", status_not: "MediaStatus", status_not_in: "[MediaStatus]",
-  episodes_greater: "Int", episodes_lesser: "Int",
-  duration_greater: "Int", duration_lesser: "Int",
-  chapters_greater: "Int", chapters_lesser: "Int",
-  volumes_greater: "Int", volumes_lesser: "Int",
-  genre_in: "[String]", genre_not_in: "[String]",
-  tag_in: "[String]", tag_not_in: "[String]",
-  tagCategory_in: "[String]", tagCategory_not_in: "[String]",
-  licensedBy_in: "[String]", licensedById_in: "[Int]",
-  countryOfOrigin_in: "[CountryCode]", countryOfOrigin_not_in: "[CountryCode]",
-  averageScore_not: "Int", averageScore_greater: "Int", averageScore_lesser: "Int",
-  popularity_not: "Int", popularity_greater: "Int", popularity_lesser: "Int",
-  source_in: "[MediaSource]",
-};
+// Re-exported so the suite can assert the two stay in step: searchMediaDirect
+// only emits keys present here, so a field added to the Zod schema alone
+// would be accepted and then silently dropped.
+export { MEDIA_FILTER_GQL_TYPES };
 
 // The only media filters AniList evaluates against a logged-in user. Every
 // other filter — and every field selected below — is fully public.

@@ -32,7 +32,8 @@
     "pack:mcpb": "pnpm install --shamefully-hoist && mcpb pack",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "sync-schema": "tsx scripts/sync-schema.ts"
   },
   "keywords": [
     "ai",

@@ -66,11 +66,17 @@ describe("media filter fields reach the API", () => {
     expect(unmapped).toEqual([]);
   });
 
-  it("every GraphQL type mapping is reachable from the schema", () => {
-    const unreachable = Object.keys(MEDIA_FILTER_GQL_TYPES).filter(
-      (k) => !(k in MediaFilterTypesSchema.shape),
+  it("the generated map is a superset of what we expose", () => {
+    // MEDIA_FILTER_GQL_TYPES is generated from every Query.Media argument,
+    // so it may legitimately contain filters we choose not to expose. What
+    // must never happen is exposing a filter AniList does not accept.
+    const unmapped = Object.keys(MediaFilterTypesSchema.shape).filter(
+      (k) => k !== "type" && !MEDIA_FILTER_GQL_TYPES[k],
     );
-    expect(unreachable).toEqual([]);
+    expect(unmapped).toEqual([]);
+    expect(Object.keys(MEDIA_FILTER_GQL_TYPES).length).toBeGreaterThanOrEqual(
+      Object.keys(MediaFilterTypesSchema.shape).length - 1,
+    );
   });
 
   it("exposes the licensing and country filters AniList supports", () => {
