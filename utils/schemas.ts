@@ -42,6 +42,12 @@ export const MediaSourceSchema = z.enum([
   "NOVEL",
   "DOUJINSHI",
   "ANIME",
+  "WEB_NOVEL",
+  "LIVE_ACTION",
+  "GAME",
+  "COMIC",
+  "MULTIMEDIA_PROJECT",
+  "PICTURE_BOOK",
 ]);
 
 export const MediaSortSchema = z.enum([
@@ -84,7 +90,7 @@ export const MediaSortSchema = z.enum([
   "FAVOURITES_DESC",
 ]);
 
-export const ActivitySortSchema = z.enum(["ID", "ID_DESC"]);
+export const ActivitySortSchema = z.enum(["ID", "ID_DESC", "PINNED"]);
 
 export const ActivityTypeSchema = z.enum([
   "TEXT",
@@ -135,6 +141,9 @@ export const NotificationTypeSchema = z.enum([
   "MEDIA_DATA_CHANGE",
   "MEDIA_MERGE",
   "MEDIA_DELETION",
+  "MEDIA_SUBMISSION_UPDATE",
+  "STAFF_SUBMISSION_UPDATE",
+  "CHARACTER_SUBMISSION_UPDATE",
 ]);
 
 export const EntryStatusSchema = z.enum([
@@ -151,10 +160,15 @@ export const NotificationOptionsSchema = z.object({
   enabled: z.boolean(),
 });
 
+// Every member of AniList's FuzzyDate / FuzzyDateInput is independently
+// optional and nullable — "sometime in 2020" and "no date at all" are both
+// representable, and requiring all three made them unreachable.
+const fuzzyDatePart = z.number().nullable().optional();
+
 export const FuzzyDateSchema = z.object({
-  year: z.number().nullable(),
-  month: z.number().nullable(),
-  day: z.number().nullable(),
+  year: fuzzyDatePart,
+  month: fuzzyDatePart,
+  day: fuzzyDatePart,
 });
 
 export const MediaListOptionsSchema = z.object({
@@ -263,22 +277,14 @@ export const UpdateEntryOptionsSchema = z
         "Per-category advanced scores, in the order configured in the " +
           "user's mediaListOptions.animeList/mangaList.advancedScoring",
       ),
-    startedAt: z
-      .object({
-        year: z.number(),
-        month: z.number(),
-        day: z.number(),
-      })
-      .optional()
-      .describe("When the user started the media"),
-    completedAt: z
-      .object({
-        year: z.number(),
-        month: z.number(),
-        day: z.number(),
-      })
-      .optional()
-      .describe("When the user completed the media"),
+    startedAt: FuzzyDateSchema.optional().describe(
+      "When the user started the media. Any of year/month/day may be omitted " +
+        "or null (e.g. { year: 2020 }); pass all three as null to clear it.",
+    ),
+    completedAt: FuzzyDateSchema.optional().describe(
+      "When the user completed the media. Any of year/month/day may be " +
+        "omitted or null; pass all three as null to clear it.",
+    ),
   })
   .describe("Values to save with the entry");
 
@@ -430,6 +436,14 @@ export const MediaFilterTypesSchema = z.object({
     .string()
     .optional()
     .describe("Filter by media licensed by a specific company"),
+  licensedById: z
+    .number()
+    .optional()
+    .describe("Filter by media licensed by a specific company ID"),
+  isLicensed: z
+    .boolean()
+    .optional()
+    .describe("Filter by whether the media is officially licensed"),
   averageScore: z
     .number()
     .optional()
@@ -572,6 +586,18 @@ export const MediaFilterTypesSchema = z.object({
     .array(z.string())
     .optional()
     .describe("Filter by media licensed by companies in array"),
+  licensedById_in: z
+    .array(z.number())
+    .optional()
+    .describe("Filter by media licensed by company IDs in array"),
+  countryOfOrigin_in: z
+    .array(z.string())
+    .optional()
+    .describe("Filter by country of origin in array (ISO 3166-1 alpha-2)"),
+  countryOfOrigin_not_in: z
+    .array(z.string())
+    .optional()
+    .describe("Filter by country of origin not in array (ISO 3166-1 alpha-2)"),
   averageScore_not: z
     .number()
     .optional()

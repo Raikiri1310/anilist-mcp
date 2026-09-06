@@ -241,7 +241,12 @@ export function registerUserTools(
           return auth.errorResponse;
         }
 
-        const updatedOptions = await anilist.user.update(options);
+        // anilist-node's NotificationType type predates the three
+        // *_SUBMISSION_UPDATE values; user.update() passes options straight
+        // through as GraphQL variables, so the cast is safe.
+        const updatedOptions = await anilist.user.update(
+          options as Parameters<typeof anilist.user.update>[0],
+        );
         return {
           content: [
             {

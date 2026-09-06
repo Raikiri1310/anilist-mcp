@@ -1,8 +1,11 @@
 const ANILIST_API = "https://graphql.anilist.co";
 const REQUEST_TIMEOUT_MS = 15_000;
 
-// GraphQL types for each field in MediaFilterTypesSchema
-const MEDIA_FILTER_GQL_TYPES: Record<string, string> = {
+// GraphQL types for each field in MediaFilterTypesSchema. Exported so the
+// suite can assert the two stay in step: searchMediaDirect only emits keys
+// present here, so a field added to the Zod schema alone would be accepted
+// and then silently dropped.
+export const MEDIA_FILTER_GQL_TYPES: Record<string, string> = {
   id: "Int", idMal: "Int",
   startDate: "FuzzyDateInt", endDate: "FuzzyDateInt",
   season: "MediaSeason", seasonYear: "Int",
@@ -164,11 +167,18 @@ export async function searchMediaDirect(
         media(${mediaArgs}) {
           id idMal
           title { romaji english native userPreferred }
-          format status description
+          format description
           startDate { year month day }
           endDate { year month day }
           season seasonYear episodes duration chapters volumes
-          countryOfOrigin source hashtag updatedAt
+          countryOfOrigin hashtag updatedAt
+          # status and source are versioned enums: unversioned, AniList
+          # answers with the legacy v1 set, which reports every HIATUS title
+          # as RELEASING and collapses WEB_NOVEL/COMIC/GAME/LIVE_ACTION/
+          # MULTIMEDIA_PROJECT/PICTURE_BOOK into OTHER. These are the highest
+          # versions AniList honours; higher numbers silently fall back to v1.
+          status(version: 2)
+          source(version: 3)
           coverImage { large medium color }
           bannerImage genres synonyms
           averageScore meanScore popularity favourites isAdult

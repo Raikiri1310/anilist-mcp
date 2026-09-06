@@ -56,9 +56,12 @@ export function registerSearchTools(
     },
     async ({ activityID, filter, page, perPage }) => {
       try {
+        // anilist-node's ActivitySort type predates PINNED; its runtime
+        // forwards the filter to GraphQL without validating against the enum,
+        // so the cast is safe and our schema follows the live API.
         const results = await anilist.searchEntry.activity(
           activityID,
-          filter,
+          filter as Parameters<typeof anilist.searchEntry.activity>[1],
           page,
           perPage,
         );
