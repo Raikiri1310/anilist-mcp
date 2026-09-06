@@ -37,6 +37,7 @@ Decision 5 takes the half that *is* static — enums and filter-arg types — an
 
 ```
 utils/mediaSelection.ts     group registry, core selection, caps, include schema  [new]
+utils/mediaNormalize.ts     unwrap envelopes, apply caps, drop nulls              [new]
 utils/anilistGraphql.ts     + getMediaDirect(); searchMediaDirect() uses builder
 utils/schemas.generated.ts  generated enums + MEDIA_FILTER_GQL_TYPES             [new]
 scripts/sync-schema.ts      introspects AniList, writes the above                [new]
