@@ -26,15 +26,16 @@ export { registerUserTools } from "./user.js";
 export function registerAllTools(
   server: McpServer,
   anilist: AniList,
+  anilistAuthed: AniList,
   config: z.infer<typeof ConfigSchema>,
 ) {
-  registerMiscTools(server, anilist, config);
-  registerActivityTools(server, anilist, config);
-  registerListsTools(server, anilist, config);
-  registerMediaTools(server, anilist, config);
-  registerPeopleTools(server, anilist, config);
+  registerMiscTools(server, anilist, anilistAuthed, config);
+  registerActivityTools(server, anilist, anilistAuthed, config);
+  registerListsTools(server, anilist, anilistAuthed, config);
+  registerMediaTools(server, anilist, anilistAuthed, config);
+  registerPeopleTools(server, anilist, anilistAuthed, config);
   registerRecommendationTools(server, anilist);
-  registerSearchTools(server, anilist, config);
-  registerThreadTools(server, anilist, config);
-  registerUserTools(server, anilist, config);
+  registerSearchTools(server, anilist, anilistAuthed, config);
+  registerThreadTools(server, anilist, anilistAuthed, config);
+  registerUserTools(server, anilist, anilistAuthed, config);
 }

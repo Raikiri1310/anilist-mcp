@@ -22,6 +22,7 @@ function buildFilter(fields: Record<string, unknown>): Record<string, unknown> |
 export function registerSearchTools(
   server: McpServer,
   anilist: AniList,
+  anilistAuthed: AniList,
   config: z.infer<typeof ConfigSchema>,
 ) {
   // anilist.searchEntry.activity()
@@ -40,14 +41,17 @@ export function registerSearchTools(
       ),
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("Page number for results"),
       perPage: z
         .number()
+        .min(1)
+        .max(50)
         .optional()
         .default(5)
-        .describe("Results per page (max 25)"),
+        .describe("Results per page (max 50)"),
     },
     {
       title: "AniList Activity Search",
@@ -56,12 +60,18 @@ export function registerSearchTools(
     },
     async ({ activityID, filter, page, perPage }) => {
       try {
+        // isFollowing is the one activity filter AniList evaluates against a
+        // logged-in user; everything else here is public, and routing it
+        // through the anonymous client keeps a stale token from breaking it.
+        const client =
+          filter?.isFollowing !== undefined ? anilistAuthed : anilist;
+
         // anilist-node's ActivitySort type predates PINNED; its runtime
         // forwards the filter to GraphQL without validating against the enum,
         // so the cast is safe and our schema follows the live API.
-        const results = await anilist.searchEntry.activity(
+        const results = await client.searchEntry.activity(
           activityID,
-          filter as Parameters<typeof anilist.searchEntry.activity>[1],
+          filter as Parameters<typeof client.searchEntry.activity>[1],
           page,
           perPage,
         );
@@ -94,14 +104,17 @@ export function registerSearchTools(
       ...MediaFilterFields,
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("Page number for results"),
       amount: z
         .number()
+        .min(1)
+        .max(50)
         .optional()
         .default(5)
-        .describe("Results per page (max 25)"),
+        .describe("Results per page (max 50)"),
     },
     {
       title: "AniList Anime Search",
@@ -143,14 +156,17 @@ export function registerSearchTools(
       term: z.string().describe("Search term for finding characters"),
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("Page number for results"),
       amount: z
         .number()
+        .min(1)
+        .max(50)
         .optional()
         .default(5)
-        .describe("Results per page (max 25)"),
+        .describe("Results per page (max 50)"),
     },
     {
       title: "AniList Character Search",
@@ -189,14 +205,17 @@ export function registerSearchTools(
       ...MediaFilterFields,
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("Page number for results"),
       amount: z
         .number()
+        .min(1)
+        .max(50)
         .optional()
         .default(5)
-        .describe("Results per page (max 25)"),
+        .describe("Results per page (max 50)"),
     },
     {
       title: "AniList Manga Search",
@@ -238,14 +257,17 @@ export function registerSearchTools(
       term: z.string().describe("Search term for finding staff members"),
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("Page number for results"),
       amount: z
         .number()
+        .min(1)
+        .max(50)
         .optional()
         .default(5)
-        .describe("Results per page (max 25)"),
+        .describe("Results per page (max 50)"),
     },
     {
       title: "AniList Staff Search",
@@ -280,14 +302,17 @@ export function registerSearchTools(
       term: z.string().describe("Search term for finding studios"),
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("Page number for results"),
       amount: z
         .number()
+        .min(1)
+        .max(50)
         .optional()
         .default(5)
-        .describe("Results per page (max 25)"),
+        .describe("Results per page (max 50)"),
     },
     {
       title: "AniList Studio Search",
@@ -322,14 +347,17 @@ export function registerSearchTools(
       term: z.string().describe("Search term for finding users"),
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("Page number for results"),
       amount: z
         .number()
+        .min(1)
+        .max(50)
         .optional()
         .default(5)
-        .describe("Results per page (max 25)"),
+        .describe("Results per page (max 50)"),
     },
     {
       title: "AniList User Search",

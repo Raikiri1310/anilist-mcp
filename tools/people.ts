@@ -7,6 +7,7 @@ import { requireAuth } from "../utils/auth.js";
 export function registerPeopleTools(
   server: McpServer,
   anilist: AniList,
+  anilistAuthed: AniList,
   config: z.infer<typeof ConfigSchema>,
 ) {
   // anilist.people.character()
@@ -66,7 +67,7 @@ export function registerPeopleTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.people.favouriteChar(id);
+        const result = await anilistAuthed.people.favouriteChar(id);
         return {
           content: [
             {
@@ -111,7 +112,7 @@ export function registerPeopleTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.people.favouriteStaff(id);
+        const result = await anilistAuthed.people.favouriteStaff(id);
         return {
           content: [
             {
@@ -138,6 +139,7 @@ export function registerPeopleTools(
     {
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("What page in the search to target"),
@@ -174,6 +176,7 @@ export function registerPeopleTools(
     {
       page: z
         .number()
+        .min(1)
         .optional()
         .default(1)
         .describe("What page in the search to target"),

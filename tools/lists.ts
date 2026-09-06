@@ -9,6 +9,7 @@ import { saveMediaListEntryDirect } from "../utils/anilistGraphql.js";
 export function registerListsTools(
   server: McpServer,
   anilist: AniList,
+  anilistAuthed: AniList,
   config: z.infer<typeof ConfigSchema>,
 ) {
   // anilist.lists.addEntry()
@@ -146,7 +147,7 @@ export function registerListsTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.lists.removeEntry(id);
+        const result = await anilistAuthed.lists.removeEntry(id);
         return {
           content: [
             {

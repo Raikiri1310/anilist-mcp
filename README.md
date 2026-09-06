@@ -59,6 +59,11 @@ You can also deploy via MCP platforms like [Smithery](https://smithery.ai/server
 
 When using the STDIO transport or hosting the HTTP transport server, you can pass configuration via environment variables:
 - `ANILIST_TOKEN`: (Optional) AniList API Token (Only needed for operations that require login)
+- `ALLOWED_HOSTS`: (Optional) Comma-separated `Host` header values the HTTP transport will accept
+- `ALLOWED_ORIGINS`: (Optional) Comma-separated `Origin` header values the HTTP transport will accept
+
+> [!TIP]
+> Setting `ALLOWED_HOSTS` and/or `ALLOWED_ORIGINS` enables DNS-rebinding protection. Leaving both unset preserves the previous behaviour, where any origin is accepted. If you run the HTTP transport locally with `ANILIST_TOKEN` set, configure these — otherwise a web page the user visits can reach the server and act as your AniList account.
 
 > [!CAUTION]
 > If you are hosting the HTTP transport server with token pre-configured, you should protect your endpoint and implement authentication before allowing users to access it. Otherwise, anyone can access your MCP server while using your AniList token.

@@ -8,6 +8,7 @@ import { UserOptionsInputSchema } from "../utils/schemas.js";
 export function registerUserTools(
   server: McpServer,
   anilist: AniList,
+  anilistAuthed: AniList,
   config: z.infer<typeof ConfigSchema>,
 ) {
   // anilist.user.all()
@@ -65,7 +66,7 @@ export function registerUserTools(
           return auth.errorResponse;
         }
 
-        const result = await anilist.user.follow(userID);
+        const result = await anilistAuthed.user.follow(userID);
         return {
           content: [
             {
@@ -85,7 +86,7 @@ export function registerUserTools(
     },
   );
 
-  // anilist.user.getAuthorized()
+  // anilistAuthed.user.getAuthorized()
   server.tool(
     "get_authorized_user",
     "[Requires Login] Get profile information of the currently authorized user",
@@ -102,7 +103,7 @@ export function registerUserTools(
           return auth.errorResponse;
         }
 
-        const profile = await anilist.user.getAuthorized();
+        const profile = await anilistAuthed.user.getAuthorized();
         return {
           content: [
             {
@@ -220,7 +221,7 @@ export function registerUserTools(
     },
   );
 
-  // anilist.user.update()
+  // anilistAuthed.user.update()
   server.tool(
     "update_user",
     "[Requires Login] Update user settings",
@@ -244,7 +245,7 @@ export function registerUserTools(
         // anilist-node's NotificationType type predates the three
         // *_SUBMISSION_UPDATE values; user.update() passes options straight
         // through as GraphQL variables, so the cast is safe.
-        const updatedOptions = await anilist.user.update(
+        const updatedOptions = await anilistAuthed.user.update(
           options as Parameters<typeof anilist.user.update>[0],
         );
         return {
