@@ -250,7 +250,12 @@ export const UpdateEntryOptionsSchema = z
     customLists: z
       .array(z.string())
       .optional()
-      .describe("Array of custom list names for the media"),
+      .describe(
+        "The COMPLETE set of custom list names this entry should belong to. " +
+          "AniList replaces the entry's existing custom-list membership with " +
+          "this array, so any list left out is silently removed. To add one " +
+          "list, read the entry's current customLists first and send them all.",
+      ),
     advancedScores: z
       .array(z.number())
       .optional()
