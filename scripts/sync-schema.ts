@@ -80,16 +80,28 @@ lines.push(
 );
 for (const a of mediaArgs) lines.push(`  ${a.name}: "${a.type}",`);
 lines.push("};", "");
-lines.push(`export const SCHEMA_SYNCED_AT = "${new Date().toISOString().slice(0, 10)}";`, "");
+// The stamp records when the generated CONTENT last changed, not when the
+// script last ran. Stamping every run would make `body === prevBody` below
+// false on any later day, so the no-op path could never be reached and every
+// run would dirty the working tree for nothing.
+const STAMP_RE = /\nexport const SCHEMA_SYNCED_AT = "\d{4}-\d{2}-\d{2}";\n$/;
+const stamp = (day: string) => `\nexport const SCHEMA_SYNCED_AT = "${day}";\n`;
 
-const next = lines.join("\n");
+const body = lines.join("\n");
 const prev = existsSync(OUT) ? readFileSync(OUT, "utf8") : "";
+const prevBody = prev.replace(STAMP_RE, "");
+
+if (prev && prevBody === body) {
+  // Leave the file byte-identical, stamp included.
+  console.log("no schema changes");
+  process.exit(0);
+}
+
+const next = body + stamp(new Date().toISOString().slice(0, 10));
 writeFileSync(OUT, next);
 
 if (!prev) {
   console.log(`created ${OUT}`);
-} else if (prev === next) {
-  console.log("no schema changes");
 } else {
   const names = (s: string) => new Set(s.match(/^  "?[A-Za-z_]+"?[,:]/gm)?.map((x) => x.trim()) ?? []);
   const before = names(prev), after = names(next);
