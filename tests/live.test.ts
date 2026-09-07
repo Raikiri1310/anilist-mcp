@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { getMediaDirect, searchMediaDirect } from "../utils/anilistGraphql.js";
+import { MEDIA_GROUPS, requiresAuth, type MediaGroup } from "../utils/mediaSelection.js";
 import { MediaSourceSchema, MEDIA_FILTER_GQL_TYPES } from "../utils/schemas.generated.js";
 
 const live = describe.skipIf(!process.env.ANILIST_LIVE);
@@ -25,6 +26,47 @@ live("live AniList", () => {
     const r = await getMediaDirect("ANIME", [21, 154587, 999999999], []);
     expect(r.media).toHaveLength(2);
     expect(r.notFound).toEqual([999999999]);
+  }, 30_000);
+
+  // The token-budget suite runs off a committed fixture, so a group whose
+  // real shape drifts — a renamed field, a connection that stops being one —
+  // stays green there and breaks in production. This is the only test that
+  // asks AniList for every group in one request.
+  it("returns every group, and the all-groups payload stays bounded", async () => {
+    const groups = (Object.keys(MEDIA_GROUPS) as MediaGroup[]).filter(
+      (g) => !requiresAuth([g]),
+    );
+
+    // One Piece is the title that populates all of them at once: still
+    // airing, licensed, streamed, heavily reviewed and ranked.
+    const KEY_FOR_GROUP: Record<Exclude<MediaGroup, "viewer">, string> = {
+      tags: "tags",
+      studios: "studios",
+      characters: "characters",
+      staff: "staff",
+      relations: "relations",
+      recommendations: "recommendations",
+      reviews: "reviews",
+      links: "externalLinks",
+      episodes: "streamingEpisodes",
+      rankings: "rankings",
+      airing: "airingSchedule",
+      stats: "stats",
+      meta: "bannerImage",
+    };
+
+    const r = await getMediaDirect("ANIME", [21], groups);
+    expect(r.notFound).toEqual([]);
+    const media = r.media[0] as Record<string, unknown>;
+
+    for (const g of groups) {
+      const key = KEY_FOR_GROUP[g as Exclude<MediaGroup, "viewer">];
+      expect(media, `group ${g} produced no ${key}`).toHaveProperty(key);
+    }
+
+    // Same ceiling tokenBudget.test.ts enforces on the fixture, against live
+    // data — an uncapped group would blow past it here first.
+    expect(Math.round(JSON.stringify(media).length / 4)).toBeLessThan(12_000);
   }, 30_000);
 
   it("the committed schema is still current", async () => {
