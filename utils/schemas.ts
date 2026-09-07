@@ -7,153 +7,41 @@ export const ConfigSchema = z.object({
     .describe("AniList API token for authenticated requests"),
 });
 
-export const MediaTypeSchema = z.enum(["ANIME", "MANGA"]);
+// Enum values are generated from AniList introspection — see
+// scripts/sync-schema.ts. Hand-maintaining them is what produced four
+// separate silent gaps (six missing MediaSource values, three missing
+// NotificationType values, ActivitySort.PINNED).
+export {
+  MediaTypeSchema,
+  MediaFormatSchema,
+  MediaStatusSchema,
+  MediaSeasonSchema,
+  MediaSourceSchema,
+  MediaSortSchema,
+  ActivitySortSchema,
+  ActivityTypeSchema,
+  UserTitleLanguageSchema,
+  UserStaffNameLanguageSchema,
+  ScoreFormatSchema,
+  NotificationTypeSchema,
+  EntryStatusSchema,
+} from "./schemas.generated.js";
 
-export const MediaFormatSchema = z.enum([
-  "TV",
-  "TV_SHORT",
-  "MOVIE",
-  "SPECIAL",
-  "OVA",
-  "ONA",
-  "MUSIC",
-  "MANGA",
-  "NOVEL",
-  "ONE_SHOT",
-]);
-
-export const MediaStatusSchema = z.enum([
-  "FINISHED",
-  "RELEASING",
-  "NOT_YET_RELEASED",
-  "CANCELLED",
-  "HIATUS",
-]);
-
-export const MediaSeasonSchema = z.enum(["WINTER", "SPRING", "SUMMER", "FALL"]);
-
-export const MediaSourceSchema = z.enum([
-  "ORIGINAL",
-  "MANGA",
-  "LIGHT_NOVEL",
-  "VISUAL_NOVEL",
-  "VIDEO_GAME",
-  "OTHER",
-  "NOVEL",
-  "DOUJINSHI",
-  "ANIME",
-  "WEB_NOVEL",
-  "LIVE_ACTION",
-  "GAME",
-  "COMIC",
-  "MULTIMEDIA_PROJECT",
-  "PICTURE_BOOK",
-]);
-
-export const MediaSortSchema = z.enum([
-  "ID",
-  "ID_DESC",
-  "TITLE_ROMAJI",
-  "TITLE_ROMAJI_DESC",
-  "TITLE_ENGLISH",
-  "TITLE_ENGLISH_DESC",
-  "TITLE_NATIVE",
-  "TITLE_NATIVE_DESC",
-  "TYPE",
-  "TYPE_DESC",
-  "FORMAT",
-  "FORMAT_DESC",
-  "START_DATE",
-  "START_DATE_DESC",
-  "END_DATE",
-  "END_DATE_DESC",
-  "SCORE",
-  "SCORE_DESC",
-  "POPULARITY",
-  "POPULARITY_DESC",
-  "TRENDING",
-  "TRENDING_DESC",
-  "EPISODES",
-  "EPISODES_DESC",
-  "DURATION",
-  "DURATION_DESC",
-  "STATUS",
-  "STATUS_DESC",
-  "CHAPTERS",
-  "CHAPTERS_DESC",
-  "VOLUMES",
-  "VOLUMES_DESC",
-  "UPDATED_AT",
-  "UPDATED_AT_DESC",
-  "SEARCH_MATCH",
-  "FAVOURITES",
-  "FAVOURITES_DESC",
-]);
-
-export const ActivitySortSchema = z.enum(["ID", "ID_DESC", "PINNED"]);
-
-export const ActivityTypeSchema = z.enum([
-  "TEXT",
-  "ANIME_LIST",
-  "MANGA_LIST",
-  "MESSAGE",
-  "MEDIA_LIST",
-]);
-
-export const UserTitleLanguageSchema = z.enum([
-  "ROMAJI",
-  "ENGLISH",
-  "NATIVE",
-  "ROMAJI_STYLISED",
-  "ENGLISH_STYLISED",
-  "NATIVE_STYLISED",
-]);
-
-export const UserStaffNameLanguageSchema = z.enum([
-  "ROMAJI",
-  "NATIVE",
-  "ROMAJI_WESTERN",
-]);
-
-export const ScoreFormatSchema = z.enum([
-  "POINT_100",
-  "POINT_10_DECIMAL",
-  "POINT_10",
-  "POINT_5",
-  "POINT_3",
-]);
-
-export const NotificationTypeSchema = z.enum([
-  "ACTIVITY_MESSAGE",
-  "ACTIVITY_REPLY",
-  "FOLLOWING",
-  "ACTIVITY_MENTION",
-  "THREAD_COMMENT_MENTION",
-  "THREAD_SUBSCRIBED",
-  "THREAD_COMMENT_REPLY",
-  "AIRING",
-  "ACTIVITY_LIKE",
-  "ACTIVITY_REPLY_LIKE",
-  "THREAD_LIKE",
-  "THREAD_COMMENT_LIKE",
-  "ACTIVITY_REPLY_SUBSCRIBED",
-  "RELATED_MEDIA_ADDITION",
-  "MEDIA_DATA_CHANGE",
-  "MEDIA_MERGE",
-  "MEDIA_DELETION",
-  "MEDIA_SUBMISSION_UPDATE",
-  "STAFF_SUBMISSION_UPDATE",
-  "CHARACTER_SUBMISSION_UPDATE",
-]);
-
-export const EntryStatusSchema = z.enum([
-  "CURRENT",
-  "PLANNING",
-  "COMPLETED",
-  "DROPPED",
-  "PAUSED",
-  "REPEATING",
-]);
+import {
+  MediaFormatSchema,
+  MediaSeasonSchema,
+  MediaSortSchema,
+  MediaSourceSchema,
+  MediaStatusSchema,
+  MediaTypeSchema,
+  ActivitySortSchema,
+  ActivityTypeSchema,
+  NotificationTypeSchema,
+  ScoreFormatSchema,
+  UserStaffNameLanguageSchema,
+  UserTitleLanguageSchema,
+  EntryStatusSchema,
+} from "./schemas.generated.js";
 
 export const NotificationOptionsSchema = z.object({
   type: NotificationTypeSchema,

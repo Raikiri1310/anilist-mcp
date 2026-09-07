@@ -93,9 +93,13 @@ describe("searchMediaDirect", () => {
     expect(body.query).toContain("$sort: [MediaSort]");
   });
 
-  it("returns the Page object from the response", async () => {
-    const result = await searchMediaDirect("ANIME", undefined, { season: "SPRING", seasonYear: 2026 }, 1, 5);
-    expect(result).toEqual(MOCK_PAGE_RESPONSE);
+  it("returns pageInfo and normalized media", async () => {
+    const result: any = await searchMediaDirect(
+      "ANIME", undefined, { season: "SPRING", seasonYear: 2026 }, 1, 5,
+    );
+    expect(result.pageInfo).toEqual(MOCK_PAGE_RESPONSE.pageInfo);
+    expect(result.media).toHaveLength(1);
+    expect(result.media[0].id).toBe(999);
   });
 
   it("throws on non-ok HTTP response", async () => {
@@ -137,5 +141,34 @@ describe("original library bug (regression documentation)", () => {
     // Result: AniList ignored the filter and returned ID-ascending results.
     // Fix: searchMediaDirect passes all filter fields as proper GraphQL variables.
     expect(true).toBe(true); // documented, not reproducible without the broken library
+  });
+});
+
+describe("search selection groups", () => {
+  it("returns core only when no include is given", async () => {
+    vi.stubGlobal("fetch", mockFetchSuccess(MOCK_PAGE_RESPONSE));
+    await searchMediaDirect("ANIME", "x", undefined, 1, 5);
+    const body = JSON.parse((fetch as ReturnType<typeof vi.fn>).mock.calls[0][1].body);
+    expect(body.query).not.toContain("tags {");
+    expect(body.query).not.toContain("studios {");
+    expect(body.query).not.toContain("streamingEpisodes");
+    vi.unstubAllGlobals();
+  });
+
+  it("includes a requested group", async () => {
+    vi.stubGlobal("fetch", mockFetchSuccess(MOCK_PAGE_RESPONSE));
+    await searchMediaDirect("ANIME", "x", undefined, 1, 5, ["studios"]);
+    const body = JSON.parse((fetch as ReturnType<typeof vi.fn>).mock.calls[0][1].body);
+    expect(body.query).toContain("studios {");
+    expect(body.query).not.toContain("reviews");
+    vi.unstubAllGlobals();
+  });
+
+  it("authenticates for the viewer group", async () => {
+    vi.stubGlobal("fetch", mockFetchSuccess(MOCK_PAGE_RESPONSE));
+    await searchMediaDirect("ANIME", "x", undefined, 1, 5, ["viewer"], "tok");
+    const init = (fetch as ReturnType<typeof vi.fn>).mock.calls[0][1];
+    expect(init.headers.Authorization).toBe("Bearer tok");
+    vi.unstubAllGlobals();
   });
 });

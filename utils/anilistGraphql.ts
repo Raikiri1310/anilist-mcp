@@ -1,41 +1,18 @@
+import { MEDIA_FILTER_GQL_TYPES } from "./schemas.generated.js";
+import {
+  buildMediaSelection,
+  requiresAuth,
+  type MediaGroup,
+} from "./mediaSelection.js";
+import { normalizeMedia } from "./mediaNormalize.js";
+
 const ANILIST_API = "https://graphql.anilist.co";
 const REQUEST_TIMEOUT_MS = 15_000;
 
-// GraphQL types for each field in MediaFilterTypesSchema. Exported so the
-// suite can assert the two stay in step: searchMediaDirect only emits keys
-// present here, so a field added to the Zod schema alone would be accepted
-// and then silently dropped.
-export const MEDIA_FILTER_GQL_TYPES: Record<string, string> = {
-  id: "Int", idMal: "Int",
-  startDate: "FuzzyDateInt", endDate: "FuzzyDateInt",
-  season: "MediaSeason", seasonYear: "Int",
-  format: "MediaFormat", status: "MediaStatus",
-  episodes: "Int", duration: "Int", chapters: "Int", volumes: "Int",
-  isAdult: "Boolean", genre: "String", tag: "String",
-  minimumTagRank: "Int", tagCategory: "String", onList: "Boolean",
-  licensedBy: "String", licensedById: "Int", isLicensed: "Boolean",
-  averageScore: "Int", popularity: "Int",
-  source: "MediaSource", countryOfOrigin: "CountryCode", sort: "[MediaSort]",
-  search: "String",
-  id_not: "Int", id_in: "[Int]", id_not_in: "[Int]",
-  idMal_not: "Int", idMal_in: "[Int]", idMal_not_in: "[Int]",
-  startDate_greater: "FuzzyDateInt", startDate_lesser: "FuzzyDateInt", startDate_like: "String",
-  endDate_greater: "FuzzyDateInt", endDate_lesser: "FuzzyDateInt", endDate_like: "String",
-  format_in: "[MediaFormat]", format_not: "MediaFormat", format_not_in: "[MediaFormat]",
-  status_in: "[MediaStatus]", status_not: "MediaStatus", status_not_in: "[MediaStatus]",
-  episodes_greater: "Int", episodes_lesser: "Int",
-  duration_greater: "Int", duration_lesser: "Int",
-  chapters_greater: "Int", chapters_lesser: "Int",
-  volumes_greater: "Int", volumes_lesser: "Int",
-  genre_in: "[String]", genre_not_in: "[String]",
-  tag_in: "[String]", tag_not_in: "[String]",
-  tagCategory_in: "[String]", tagCategory_not_in: "[String]",
-  licensedBy_in: "[String]", licensedById_in: "[Int]",
-  countryOfOrigin_in: "[CountryCode]", countryOfOrigin_not_in: "[CountryCode]",
-  averageScore_not: "Int", averageScore_greater: "Int", averageScore_lesser: "Int",
-  popularity_not: "Int", popularity_greater: "Int", popularity_lesser: "Int",
-  source_in: "[MediaSource]",
-};
+// Re-exported so the suite can assert the two stay in step: searchMediaDirect
+// only emits keys present here, so a field added to the Zod schema alone
+// would be accepted and then silently dropped.
+export { MEDIA_FILTER_GQL_TYPES };
 
 // The only media filters AniList evaluates against a logged-in user. Every
 // other filter — and every field selected below — is fully public.
@@ -114,6 +91,7 @@ export async function searchMediaDirect(
   filter: Record<string, unknown> | undefined,
   page: number,
   perPage: number,
+  groups: MediaGroup[] = [],
   token?: string,
 ): Promise<unknown> {
   const variables: Record<string, unknown> = { page, perPage, type };
@@ -165,51 +143,30 @@ export async function searchMediaDirect(
       Page(page: $page, perPage: $perPage) {
         pageInfo { total currentPage lastPage hasNextPage perPage }
         media(${mediaArgs}) {
-          id idMal
-          title { romaji english native userPreferred }
-          format description
-          startDate { year month day }
-          endDate { year month day }
-          season seasonYear episodes duration chapters volumes
-          countryOfOrigin hashtag updatedAt
-          # status and source are versioned enums: unversioned, AniList
-          # answers with the legacy v1 set, which reports every HIATUS title
-          # as RELEASING and collapses WEB_NOVEL/COMIC/GAME/LIVE_ACTION/
-          # MULTIMEDIA_PROJECT/PICTURE_BOOK into OTHER. These are the highest
-          # versions AniList honours; higher numbers silently fall back to v1.
-          status(version: 2)
-          source(version: 3)
-          coverImage { large medium color }
-          bannerImage genres synonyms
-          averageScore meanScore popularity favourites isAdult
-          nextAiringEpisode { airingAt timeUntilAiring episode }
-          tags { id name isMediaSpoiler }
-          studios { nodes { id name isAnimationStudio } }
-          externalLinks { url }
-          streamingEpisodes { title url }
-          rankings { rank type context year season }
-          siteUrl
+          ${buildMediaSelection(groups)}
         }
       }
     }
   `;
 
-  // Only authenticate when a filter actually needs a logged-in user. AniList
-  // rejects the entire request with 400 "Invalid token" whenever the header is
-  // present and stale, so sending it unconditionally lets one expired token
-  // take out public search as well.
+  // Only authenticate when a filter or requested group actually needs a
+  // logged-in user. AniList rejects the entire request with 400 "Invalid
+  // token" whenever the header is present and stale, so sending it
+  // unconditionally lets one expired token take out public search as well.
   const trimmedToken = token?.trim() || undefined;
-  const needsAuth = AUTH_REQUIRING_MEDIA_FILTERS.some(
-    (k) => filter?.[k] !== undefined && filter?.[k] !== null,
-  );
+  const needsAuth =
+    AUTH_REQUIRING_MEDIA_FILTERS.some(
+      (k) => filter?.[k] !== undefined && filter?.[k] !== null,
+    ) || requiresAuth(groups);
 
   const data = await postGraphQL(query, variables, needsAuth ? trimmedToken : undefined);
 
-  if (!data.Page) {
-    throw new Error("Unexpected response from AniList API");
-  }
-
-  return data.Page;
+  const page_ = data.Page as { pageInfo?: unknown; media?: unknown[] } | undefined;
+  if (!page_?.media) throw new Error("Unexpected response from AniList API");
+  return {
+    pageInfo: page_.pageInfo,
+    media: page_.media.map(normalizeMedia),
+  };
 }
 
 // GraphQL types for each field SaveMediaListEntry accepts, confirmed via
@@ -294,4 +251,56 @@ export async function saveMediaListEntryDirect(
   }
 
   return data.SaveMediaListEntry;
+}
+
+/**
+ * Fetch one or more media records by AniList id.
+ *
+ * Uses Page(media(id_in:)) rather than one Media(id:) call per id: eight ids
+ * come back in a single 238ms request instead of eight requests against an
+ * API currently degraded to 30/min with a burst limiter on top.
+ *
+ * Ids AniList does not return are reported in `notFound` rather than throwing,
+ * so one bad id no longer costs the whole call.
+ */
+export async function getMediaDirect(
+  type: "ANIME" | "MANGA",
+  ids: number[],
+  groups: MediaGroup[] = [],
+  token?: string,
+): Promise<{ media: unknown[]; notFound: number[] }> {
+  const selection = buildMediaSelection(groups);
+
+  const query = `
+    query ($ids: [Int], $perPage: Int, $type: MediaType) {
+      Page(page: 1, perPage: $perPage) {
+        media(id_in: $ids, type: $type) {
+          ${selection}
+        }
+      }
+    }
+  `;
+
+  const trimmedToken = token?.trim() || undefined;
+  const data = await postGraphQL(
+    query,
+    { ids, perPage: Math.min(ids.length, 50), type },
+    requiresAuth(groups) ? trimmedToken : undefined,
+  );
+
+  const page = data.Page as { media?: unknown[] } | undefined;
+  if (!page?.media) {
+    throw new Error("Unexpected response from AniList API");
+  }
+
+  const byId = new Map<number, unknown>();
+  for (const item of page.media) {
+    const id = (item as { id?: number }).id;
+    if (typeof id === "number") byId.set(id, normalizeMedia(item));
+  }
+
+  return {
+    media: ids.filter((id) => byId.has(id)).map((id) => byId.get(id)!),
+    notFound: ids.filter((id) => !byId.has(id)),
+  };
 }

@@ -12,6 +12,43 @@ A Model Context Protocol (MCP) server that interfaces with the AniList API, allo
 - **Dual transport support**: Both HTTP and STDIO transports
 - **Cloud deployment ready**: Support Smithery and other platforms
 
+## Breaking changes in 2.0.0
+
+`get_anime` / `get_manga` no longer take `fullData`. They return core fields by
+default and accept `include` for extra field groups:
+
+    get_anime({ ids: 21 })                          // core only
+    get_anime({ ids: 21, include: ["characters"] }) // core + characters
+
+Both now return a uniform envelope — `{ media: [...], notFound: [...] }` — for
+one id or many. Ids AniList does not return are listed in `notFound` rather
+than throwing.
+
+`search_anime` / `search_manga` accept the same `include`, and return core
+fields only unless asked. They previously always returned tags, studios,
+external links, streaming episodes and rankings.
+
+Response shape changes. `get_*` is `get_anime` / `get_manga`, `search_*` is
+`search_anime` / `search_manga` — 1.x shaped the two paths differently, so
+several rows apply to only one of them.
+
+| Field | 1.x | 2.0 | Applies to |
+|---|---|---|---|
+| `bannerImage`, `hashtag`, `updatedAt`, `isLicensed`, `trailer` | top level | opt-in, inside `meta` | both |
+| `coverImage.large` | AniList's `extraLarge` | AniList's `large` (smaller image) | `get_*` |
+| `coverImage.medium` | AniList's `large` | AniList's `medium` (smaller image) | `get_*` |
+| `coverImage.small` | AniList's `medium` | gone; keys are `extraLarge`/`large`/`medium` | `get_*` |
+| `studios` | `[{id,name,isAnimationStudio}]`, top 3, anime only (`get_*`) / `{nodes:[...]}` (`search_*`) | `[{isMain, node:{...}}]`, opt-in | both |
+| `externalLinks` | `["https://..."]`, top 5 (`get_*`) / `[{url}]` (`search_*`) | `[{url,site,type,language}]`, opt-in as `links` | both |
+| `tags` | top 5 (`get_*`) / uncapped (`search_*`) | top 10 by rank, opt-in | both |
+| `status` / `source` | legacy v1 enum | versioned — corrects wrong values | both |
+
+`coverImage` only shrinks on `get_*`. The alias that shifted every image key up
+a notch lived in `anilist-node`'s media query, which `search_*` never used —
+1.x search already returned AniList's own `large`/`medium`, and never had a
+`small` key at all. `get_*` callers wanting the 1.x image sizes should read
+`coverImage.extraLarge` and `coverImage.large`.
+
 ## Requirements
 
 - Node.js 18+

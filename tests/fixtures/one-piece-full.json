@@ -1,0 +1,3166 @@
+{
+  "id": 21,
+  "idMal": 21,
+  "type": "ANIME",
+  "format": "TV",
+  "siteUrl": "https://anilist.co/anime/21",
+  "isAdult": false,
+  "countryOfOrigin": "JP",
+  "title": {
+    "romaji": "ONE PIECE",
+    "english": "ONE PIECE",
+    "native": "ONE PIECE",
+    "userPreferred": "ONE PIECE"
+  },
+  "status": "RELEASING",
+  "source": "MANGA",
+  "description": "Gold Roger was known as the Pirate King, the strongest and most infamous being to have sailed the Grand Line. The capture and death of Roger by the World Government brought a change throughout the world. His last words before his death revealed the location of the greatest treasure in the world, One Piece. It was this revelation that brought about the Grand Age of Pirates, men who dreamed of finding One Piece (which promises an unlimited amount of riches and fame), and quite possibly the most coveted of titles for the person who found it, the title of the Pirate King.<br><br>\nEnter Monkey D. Luffy, a 17-year-old boy that defies your standard definition of a pirate. Rather than the popular persona of a wicked, hardened, toothless pirate who ransacks villages for fun, Luffy’s reason for being a pirate is one of pure wonder; the thought of an exciting adventure and meeting new and intriguing people, along with finding One Piece, are his reasons of becoming a pirate. Following in the footsteps of his childhood hero, Luffy and his crew travel across the Grand Line, experiencing crazy adventures, unveiling dark mysteries and battling strong enemies, all in order to reach One Piece.<br><br>\n<b>*This includes the following special episodes:</b><br>\n- Chopperman to the Rescue! Protect the TV Station by the Shore! (Episode 336)<br>\n- The Strongest Tag-Team! Luffy and Toriko's Hard Struggle! (Episode 492)<br>\n- Team Formation! Save Chopper (Episode 542)<br>\n- History's Strongest Collaboration vs. Glutton of the Sea (Episode 590)<br>\n- 20th Anniversary! Special Romance Dawn (Episode 907)",
+  "genres": [
+    "Action",
+    "Adventure",
+    "Comedy",
+    "Drama",
+    "Fantasy"
+  ],
+  "synonyms": [
+    "ワンピース",
+    "海贼王",
+    "וואן פיס",
+    "ون بيس",
+    "วันพีซ",
+    "Vua Hải Tặc",
+    "All'arrembaggio!",
+    "Tutti all'arrembaggio!",
+    "Ντρέηκ, το Κυνήγι του Θησαυρού",
+    "OP",
+    "Ван-Пис"
+  ],
+  "startDate": {
+    "year": 1999,
+    "month": 10,
+    "day": 20
+  },
+  "endDate": {
+    "year": null,
+    "month": null,
+    "day": null
+  },
+  "season": "FALL",
+  "seasonYear": 1999,
+  "episodes": null,
+  "duration": 24,
+  "chapters": null,
+  "volumes": null,
+  "averageScore": 87,
+  "meanScore": 87,
+  "popularity": 748080,
+  "favourites": 110708,
+  "coverImage": {
+    "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-ELSYx3yMPcKM.jpg",
+    "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx21-ELSYx3yMPcKM.jpg",
+    "medium": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx21-ELSYx3yMPcKM.jpg",
+    "color": "#e49335"
+  },
+  "nextAiringEpisode": {
+    "airingAt": 1788704160,
+    "timeUntilAiring": 36754,
+    "episode": 1177
+  },
+  "tags": [
+    {
+      "id": 201,
+      "name": "Pirates",
+      "rank": 98,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1310,
+      "name": "Travel",
+      "rank": 94,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 56,
+      "name": "Shounen",
+      "rank": 93,
+      "category": "Demographic",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 105,
+      "name": "Ensemble Cast",
+      "rank": 93,
+      "category": "Cast-Main Cast",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 66,
+      "name": "Super Power",
+      "rank": 90,
+      "category": "Theme-Fantasy",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1277,
+      "name": "Found Family",
+      "rank": 88,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 82,
+      "name": "Male Protagonist",
+      "rank": 83,
+      "category": "Cast-Main Cast",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 85,
+      "name": "Tragedy",
+      "rank": 81,
+      "category": "Theme-Drama",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 456,
+      "name": "Conspiracy",
+      "rank": 81,
+      "category": "Theme-Drama",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 305,
+      "name": "Ships",
+      "rank": 81,
+      "category": "Theme-Other-Vehicle",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 2008,
+      "name": "Prophecy",
+      "rank": 80,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 83,
+      "name": "Slapstick",
+      "rank": 80,
+      "category": "Theme-Comedy",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 103,
+      "name": "Politics",
+      "rank": 79,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 153,
+      "name": "Time Skip",
+      "rank": 79,
+      "category": "Setting-Time",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 1327,
+      "name": "Royal Affairs",
+      "rank": 79,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 111,
+      "name": "War",
+      "rank": 77,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 217,
+      "name": "Dystopian",
+      "rank": 76,
+      "category": "Setting-Time",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 247,
+      "name": "Slavery",
+      "rank": 76,
+      "category": "Theme-Other",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 226,
+      "name": "Fugitive",
+      "rank": 74,
+      "category": "Theme-Action",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 253,
+      "name": "Gods",
+      "rank": 73,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 648,
+      "name": "Crime",
+      "rank": 73,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 466,
+      "name": "Lost Civilization",
+      "rank": 70,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 43,
+      "name": "Swordplay",
+      "rank": 70,
+      "category": "Theme-Action",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 391,
+      "name": "Philosophy",
+      "rank": 67,
+      "category": "Theme-Other",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 99,
+      "name": "Henshin",
+      "rank": 67,
+      "category": "Theme-Fantasy",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 801,
+      "name": "Cyborg",
+      "rank": 66,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1090,
+      "name": "Monster Boy",
+      "rank": 66,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 104,
+      "name": "Anti-Hero",
+      "rank": 65,
+      "category": "Cast-Main Cast",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 109,
+      "name": "Primarily Adult Cast",
+      "rank": 65,
+      "category": "Cast-Main Cast",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 772,
+      "name": "Shapeshifting",
+      "rank": 65,
+      "category": "Theme-Fantasy",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 142,
+      "name": "Food",
+      "rank": 65,
+      "category": "Theme-Arts",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 433,
+      "name": "Animals",
+      "rank": 64,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1304,
+      "name": "Anthropomorphism",
+      "rank": 64,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 499,
+      "name": "Skeleton",
+      "rank": 63,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1453,
+      "name": "Desert",
+      "rank": 62,
+      "category": "Setting-Scene",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 490,
+      "name": "Anachronism",
+      "rank": 62,
+      "category": "Setting-Time",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 175,
+      "name": "Robots",
+      "rank": 62,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 157,
+      "name": "Guns",
+      "rank": 62,
+      "category": "Theme-Action",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 93,
+      "name": "Post-Apocalyptic",
+      "rank": 61,
+      "category": "Setting-Universe",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1427,
+      "name": "Prison",
+      "rank": 61,
+      "category": "Setting-Scene",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 659,
+      "name": "Medicine",
+      "rank": 61,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 291,
+      "name": "Samurai",
+      "rank": 61,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 310,
+      "name": "Espionage",
+      "rank": 60,
+      "category": "Theme-Action",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 489,
+      "name": "Drugs",
+      "rank": 58,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 517,
+      "name": "Artificial Intelligence",
+      "rank": 58,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 1433,
+      "name": "Marriage",
+      "rank": 58,
+      "category": "Theme-Other",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 1681,
+      "name": "Aromantic",
+      "rank": 57,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 252,
+      "name": "Revenge",
+      "rank": 57,
+      "category": "Theme-Drama",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 779,
+      "name": "Kuudere",
+      "rank": 57,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1455,
+      "name": "Fairy",
+      "rank": 57,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 259,
+      "name": "Monster Girl",
+      "rank": 57,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 224,
+      "name": "Dragons",
+      "rank": 56,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 322,
+      "name": "Assassins",
+      "rank": 55,
+      "category": "Theme-Other-Organisations",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 101,
+      "name": "Battle Royale",
+      "rank": 54,
+      "category": "Theme-Action",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 15,
+      "name": "Demons",
+      "rank": 54,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1052,
+      "name": "Adoption",
+      "rank": 52,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 255,
+      "name": "Ninja",
+      "rank": 51,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 558,
+      "name": "Mermaid",
+      "rank": 51,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1788,
+      "name": "Indigenous Cultures",
+      "rank": 50,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 704,
+      "name": "Dinosaurs",
+      "rank": 50,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 1866,
+      "name": "Kabuki",
+      "rank": 50,
+      "category": "Theme-Arts",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 276,
+      "name": "Kaiju",
+      "rank": 50,
+      "category": "Theme-Fantasy",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 96,
+      "name": "Time Manipulation",
+      "rank": 50,
+      "category": "Theme-Sci-Fi",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 1578,
+      "name": "Arranged Marriage",
+      "rank": 47,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 1068,
+      "name": "Angels",
+      "rank": 46,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 77,
+      "name": "Gender Bending",
+      "rank": 46,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1342,
+      "name": "Clone",
+      "rank": 46,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 152,
+      "name": "Zombie",
+      "rank": 45,
+      "category": "Cast-Traits",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 122,
+      "name": "Trains",
+      "rank": 42,
+      "category": "Theme-Other-Vehicle",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1923,
+      "name": "Human Experimentation",
+      "rank": 40,
+      "category": "Theme-Other",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 1539,
+      "name": "Unrequited Love",
+      "rank": 38,
+      "category": "Theme-Romance",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 309,
+      "name": "Blackmail",
+      "rank": 20,
+      "category": "Theme-Other",
+      "isMediaSpoiler": false
+    },
+    {
+      "id": 1657,
+      "name": "Fake Relationship",
+      "rank": 20,
+      "category": "Theme-Drama",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 1899,
+      "name": "Brainwashing",
+      "rank": 20,
+      "category": "Theme-Other",
+      "isMediaSpoiler": true
+    },
+    {
+      "id": 1937,
+      "name": "Interspecies",
+      "rank": 10,
+      "category": "Theme-Romance",
+      "isMediaSpoiler": false
+    }
+  ],
+  "studios": {
+    "edges": [
+      {
+        "isMain": true,
+        "node": {
+          "id": 18,
+          "name": "Toei Animation",
+          "isAnimationStudio": true
+        }
+      },
+      {
+        "isMain": false,
+        "node": {
+          "id": 102,
+          "name": "Funimation",
+          "isAnimationStudio": false
+        }
+      },
+      {
+        "isMain": false,
+        "node": {
+          "id": 169,
+          "name": "Fuji TV",
+          "isAnimationStudio": false
+        }
+      },
+      {
+        "isMain": false,
+        "node": {
+          "id": 2524,
+          "name": "4Kids Entertainment",
+          "isAnimationStudio": false
+        }
+      },
+      {
+        "isMain": false,
+        "node": {
+          "id": 416,
+          "name": "TAP",
+          "isAnimationStudio": true
+        }
+      },
+      {
+        "isMain": false,
+        "node": {
+          "id": 142,
+          "name": "Asatsu DK",
+          "isAnimationStudio": false
+        }
+      },
+      {
+        "isMain": false,
+        "node": {
+          "id": 207,
+          "name": "Magic Bus",
+          "isAnimationStudio": true
+        }
+      },
+      {
+        "isMain": false,
+        "node": {
+          "id": 68,
+          "name": "Mushi Production",
+          "isAnimationStudio": true
+        }
+      },
+      {
+        "isMain": false,
+        "node": {
+          "id": 6291,
+          "name": "Studio Guts",
+          "isAnimationStudio": true
+        }
+      },
+      {
+        "isMain": false,
+        "node": {
+          "id": 406,
+          "name": "Asahi Production",
+          "isAnimationStudio": true
+        }
+      },
+      {
+        "isMain": false,
+        "node": {
+          "id": 6429,
+          "name": "Avex Pictures",
+          "isAnimationStudio": false
+        }
+      }
+    ]
+  },
+  "characters": {
+    "edges": [
+      {
+        "role": "MAIN",
+        "node": {
+          "id": 724,
+          "name": {
+            "full": "Usopp",
+            "native": "ウソップ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b724-GFGgI9AJQkfy.jpg"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95067,
+            "name": {
+              "full": "Kappei Yamaguchi"
+            }
+          }
+        ]
+      },
+      {
+        "role": "MAIN",
+        "node": {
+          "id": 62,
+          "name": {
+            "full": "Zoro Roronoa",
+            "native": "ロロノア・ゾロ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b62-S7oAeA9WInjV.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95123,
+            "name": {
+              "full": "Kazuya Nakai"
+            }
+          },
+          {
+            "id": 101663,
+            "name": {
+              "full": "Megumi Urawa"
+            }
+          }
+        ]
+      },
+      {
+        "role": "MAIN",
+        "node": {
+          "id": 309,
+          "name": {
+            "full": "Chopper Tony Tony",
+            "native": "トニートニー・チョッパー"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b309-H64NhbJ2ywIQ.jpg"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95128,
+            "name": {
+              "full": "Ikue Ootani"
+            }
+          },
+          {
+            "id": 95420,
+            "name": {
+              "full": "Kazue Ikura"
+            }
+          }
+        ]
+      },
+      {
+        "role": "MAIN",
+        "node": {
+          "id": 723,
+          "name": {
+            "full": "Nami",
+            "native": "ナミ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b723-vp5hPptgnNEC.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95076,
+            "name": {
+              "full": "Akemi Okamura"
+            }
+          },
+          {
+            "id": 95496,
+            "name": {
+              "full": "Wakana Yamazaki"
+            }
+          }
+        ]
+      },
+      {
+        "role": "MAIN",
+        "node": {
+          "id": 61,
+          "name": {
+            "full": "Robin Nico",
+            "native": "ニコロビン"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b61-ywXUyyocEEqt.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95130,
+            "name": {
+              "full": "Yuriko Yamaguchi"
+            }
+          },
+          {
+            "id": 95983,
+            "name": {
+              "full": "Yuuko Kobayashi"
+            }
+          },
+          {
+            "id": 111463,
+            "name": {
+              "full": "Anzu Nagai"
+            }
+          }
+        ]
+      },
+      {
+        "role": "MAIN",
+        "node": {
+          "id": 40,
+          "name": {
+            "full": "Luffy Monkey",
+            "native": "モンキー・D・ルフィ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b40-MNypXsxSRb1R.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95075,
+            "name": {
+              "full": "Mayumi Tanaka"
+            }
+          }
+        ]
+      },
+      {
+        "role": "MAIN",
+        "node": {
+          "id": 305,
+          "name": {
+            "full": "Sanji",
+            "native": "サンジ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b305-6lisPmHtCnLT.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95125,
+            "name": {
+              "full": "Hiroaki Hirata"
+            }
+          },
+          {
+            "id": 95128,
+            "name": {
+              "full": "Ikue Ootani"
+            }
+          }
+        ]
+      },
+      {
+        "role": "MAIN",
+        "node": {
+          "id": 64,
+          "name": {
+            "full": "Franky",
+            "native": "フランキー"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/n64-ChX6ZzHHjXqA.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95131,
+            "name": {
+              "full": "Kazuki Yao"
+            }
+          },
+          {
+            "id": 95277,
+            "name": {
+              "full": "Junko Noda"
+            }
+          },
+          {
+            "id": 107480,
+            "name": {
+              "full": "Subaru Kimura"
+            }
+          }
+        ]
+      },
+      {
+        "role": "MAIN",
+        "node": {
+          "id": 18938,
+          "name": {
+            "full": "Jinbe",
+            "native": "ジンベエ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b18938-yZANEfjsVhW4.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95744,
+            "name": {
+              "full": "Daisuke Gouri"
+            }
+          },
+          {
+            "id": 100317,
+            "name": {
+              "full": "Katsuhisa Houki"
+            }
+          }
+        ]
+      },
+      {
+        "role": "MAIN",
+        "node": {
+          "id": 5627,
+          "name": {
+            "full": "Brook",
+            "native": "ブルック"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b5627-av8oD3zhKvDl.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95898,
+            "name": {
+              "full": "Choo"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 5677,
+          "name": {
+            "full": "Lucci Rob",
+            "native": "ロブ･ルッチ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b5677-ZrZunVe7Kq5P.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95001,
+            "name": {
+              "full": "Tomokazu Seki"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 17190,
+          "name": {
+            "full": "Calgara",
+            "native": "カルガラ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/n17190-BCsc92WDAZPs.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95018,
+            "name": {
+              "full": "Hidekatsu Shibata"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 33569,
+          "name": {
+            "full": "Whetton",
+            "native": "ウェットン"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/33569.jpg"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95091,
+            "name": {
+              "full": "Jouji Nakata"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 21541,
+          "name": {
+            "full": "Aphelandra",
+            "native": "アフェランドラ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b21541-Dkm9rWSYxyJE.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95076,
+            "name": {
+              "full": "Akemi Okamura"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 35834,
+          "name": {
+            "full": "Lola",
+            "native": "ローラ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b35834-oKYQTV6tORQT.jpg"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95080,
+            "name": {
+              "full": "Aya Hisakawa"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 21540,
+          "name": {
+            "full": "Sweet Pea",
+            "native": "スイトピー"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b21540-WpdEYB6NddiO.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95103,
+            "name": {
+              "full": "Kujira"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 18784,
+          "name": {
+            "full": "Kung Fu Dugong",
+            "native": "クンフージュゴン"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/18784.jpg"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95123,
+            "name": {
+              "full": "Kazuya Nakai"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 21544,
+          "name": {
+            "full": "Enishida",
+            "native": "エニシダ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b21544-SUgpMDh6isaf.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95128,
+            "name": {
+              "full": "Ikue Ootani"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 49821,
+          "name": {
+            "full": "Mounblutain",
+            "native": "マウンブルテン"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b49821-5e0vEA3UME87.jpg"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95131,
+            "name": {
+              "full": "Kazuki Yao"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 40273,
+          "name": {
+            "full": "Shirahoshi",
+            "native": "しらほし"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/40273.jpg"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95140,
+            "name": {
+              "full": "Yukana"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 54499,
+          "name": {
+            "full": "Pekoms",
+            "native": "ペコムズ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b54499-1Bb8NfHH07Kj.jpg"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95157,
+            "name": {
+              "full": "Nobuo Tobita"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 6551,
+          "name": {
+            "full": "Spandam",
+            "native": "スパンダム"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b6551-szpvKXmtWqGX.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95173,
+            "name": {
+              "full": "Masaya Onosaka"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 40276,
+          "name": {
+            "full": "Zeo",
+            "native": "ゼオ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b40276-cDrb69UzdEbp.jpg"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95186,
+            "name": {
+              "full": "Shintarou Asanuma"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 22798,
+          "name": {
+            "full": "Gan Fall",
+            "native": "ガン・フォール"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b22798-2DOxtVP5YtfT.png"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95670,
+            "name": {
+              "full": "Jouji Yanami"
+            }
+          }
+        ]
+      },
+      {
+        "role": "SUPPORTING",
+        "node": {
+          "id": 40264,
+          "name": {
+            "full": "Fukaboshi",
+            "native": "フカボシ"
+          },
+          "image": {
+            "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b40264-jSwDS1UM0nOF.jpg"
+          }
+        },
+        "voiceActors": [
+          {
+            "id": 95221,
+            "name": {
+              "full": "Kentarou Itou"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "staff": {
+    "edges": [
+      {
+        "role": "Theme Song Performance (English; OP1, OP3, ED11)",
+        "node": {
+          "id": 95043,
+          "name": {
+            "full": "Vic Mignogna"
+          }
+        }
+      },
+      {
+        "role": "ADR Director (English)",
+        "node": {
+          "id": 95202,
+          "name": {
+            "full": "Mike McFarland"
+          }
+        }
+      },
+      {
+        "role": "Producer (English)",
+        "node": {
+          "id": 95203,
+          "name": {
+            "full": "Justin Cook"
+          }
+        }
+      },
+      {
+        "role": "Theme Song Performance (English; ED2, ED7, ED10)",
+        "node": {
+          "id": 95313,
+          "name": {
+            "full": "Caitlin Glass"
+          }
+        }
+      },
+      {
+        "role": "Theme Song Performance (English; ED4, ED12)",
+        "node": {
+          "id": 95475,
+          "name": {
+            "full": "Stephanie Young"
+          }
+        }
+      },
+      {
+        "role": "Theme Song Performance (English; OP2)",
+        "node": {
+          "id": 95535,
+          "name": {
+            "full": "Meredith McCoy"
+          }
+        }
+      },
+      {
+        "role": "Theme Song Performance (English; OP4, ED1)",
+        "node": {
+          "id": 95659,
+          "name": {
+            "full": "Brina Palencia"
+          }
+        }
+      },
+      {
+        "role": "Theme Song Performance (English; ED6)",
+        "node": {
+          "id": 95859,
+          "name": {
+            "full": "Leah Clark"
+          }
+        }
+      },
+      {
+        "role": "ADR Director (English; eps 131-135)",
+        "node": {
+          "id": 96339,
+          "name": {
+            "full": "Jeremy Inman"
+          }
+        }
+      },
+      {
+        "role": "ADR Director Assistant (Brazilian Portuguese; 2nd dub)",
+        "node": {
+          "id": 96423,
+          "name": {
+            "full": "Marcelo Campos"
+          }
+        }
+      },
+      {
+        "role": "Original Creator",
+        "node": {
+          "id": 96881,
+          "name": {
+            "full": "Eiichirou Oda"
+          }
+        }
+      },
+      {
+        "role": "Episode Director (ep 199)",
+        "node": {
+          "id": 100067,
+          "name": {
+            "full": "Mamoru Hosoda"
+          }
+        }
+      },
+      {
+        "role": "ADR Director (Brazilian Portuguese; 1st dub)",
+        "node": {
+          "id": 100138,
+          "name": {
+            "full": "Vagner Fagundes"
+          }
+        }
+      },
+      {
+        "role": "Director (eps 1-278)",
+        "node": {
+          "id": 100162,
+          "name": {
+            "full": "Kounosuke Uda"
+          }
+        }
+      },
+      {
+        "role": "Episode Director",
+        "node": {
+          "id": 100162,
+          "name": {
+            "full": "Kounosuke Uda"
+          }
+        }
+      },
+      {
+        "role": "Script",
+        "node": {
+          "id": 100163,
+          "name": {
+            "full": "Junki Takegami"
+          }
+        }
+      },
+      {
+        "role": "Series Composition (eps 1-195)",
+        "node": {
+          "id": 100163,
+          "name": {
+            "full": "Junki Takegami"
+          }
+        }
+      },
+      {
+        "role": "Script",
+        "node": {
+          "id": 100165,
+          "name": {
+            "full": "Ryouta Yamaguchi"
+          }
+        }
+      },
+      {
+        "role": "Script",
+        "node": {
+          "id": 100170,
+          "name": {
+            "full": "Yoshiyuki Suga"
+          }
+        }
+      },
+      {
+        "role": "Executive Producer (English)",
+        "node": {
+          "id": 100316,
+          "name": {
+            "full": "Gen Fukunaga"
+          }
+        }
+      },
+      {
+        "role": "Animation Director",
+        "node": {
+          "id": 100653,
+          "name": {
+            "full": "Yuuki Kinoshita"
+          }
+        }
+      },
+      {
+        "role": "ADR Director (German; eps 315-400)",
+        "node": {
+          "id": 100886,
+          "name": {
+            "full": "Inez Günther"
+          }
+        }
+      },
+      {
+        "role": "Script (German; eps 314-400)",
+        "node": {
+          "id": 100886,
+          "name": {
+            "full": "Inez Günther"
+          }
+        }
+      },
+      {
+        "role": "ADR Director (English; eps 24-27, 192-195)",
+        "node": {
+          "id": 100990,
+          "name": {
+            "full": "Charles Campbell"
+          }
+        }
+      },
+      {
+        "role": "Music",
+        "node": {
+          "id": 101055,
+          "name": {
+            "full": "Kouhei Tanaka"
+          }
+        }
+      }
+    ]
+  },
+  "relations": {
+    "edges": [
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 466,
+          "title": {
+            "romaji": "ONE PIECE: Taose! Kaizoku Ganzack",
+            "english": "One Piece: Defeat the Pirate Ganzack!"
+          },
+          "type": "ANIME",
+          "format": "OVA",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 1094,
+          "title": {
+            "romaji": "ONE PIECE TV Special: Umi no Heso no Daibouken-hen",
+            "english": "One Piece: Umi no Heso no Daibouken-hen"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 1237,
+          "title": {
+            "romaji": "ONE PIECE: Oounabara ni Hirake! Dekkai Dekkai Chichi no Yume!",
+            "english": "One Piece Special: Open Upon the Great Sea! A Father's Huge, HUGE Dream!"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 1238,
+          "title": {
+            "romaji": "ONE PIECE: Mamore! Saigo no Oobutai",
+            "english": "One Piece Special: Protect! The Last Great Performance"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 2020,
+          "title": {
+            "romaji": "ONE PIECE: Nenmatsu Tokubetsu Kikaku! Mugiwara no Luffy Oyabun Torimonochou",
+            "english": "One Piece Special: The Detective Memoirs of Chief Straw Hat Luffy"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 2386,
+          "title": {
+            "romaji": "ONE PIECE: Yume no Soccer Ou!",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 2490,
+          "title": {
+            "romaji": "ONE PIECE: Mezase! Kaizoku Yakyuu Ou",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 12001,
+          "title": {
+            "romaji": "ONE PIECE 3D: Gekisou! Trap Coaster",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 16239,
+          "title": {
+            "romaji": "ONE PIECE: Episode of Luffy - Hand Island no Bouken",
+            "english": "One Piece: Episode of Luffy - Hand Island Adventure"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 16468,
+          "title": {
+            "romaji": "ONE PIECE FILM: Z - GLORIOUS ISLAND",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SUMMARY",
+        "node": {
+          "id": 15323,
+          "title": {
+            "romaji": "ONE PIECE: Episode of Nami - Koukaishi no Namida to Nakama no Kizuna",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SUMMARY",
+        "node": {
+          "id": 19123,
+          "title": {
+            "romaji": "ONE PIECE: Episode of Merry - Mou Hitori no Nakama no Monogatari",
+            "english": "One Piece: Episode of Merry - The Tale of One More Friend"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 20835,
+          "title": {
+            "romaji": "ONE PIECE \"3D2Y\": Ace no shi wo Koete! Luffy Nakama to no Chikai",
+            "english": "One Piece 3D2Y: Overcome Ace’s Death! Luffy’s Vow to his Friends"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SUMMARY",
+        "node": {
+          "id": 21230,
+          "title": {
+            "romaji": "ONE PIECE: Episode of Sabo - 3-Kyoudai no Kizuna Kiseki no Saikai to Uketsugareru Ishi",
+            "english": "One Piece - Episode of Sabo: Bond of Three Brothers - A Miraculous Reunion and an Inherited Will"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 21485,
+          "title": {
+            "romaji": "ONE PIECE: Adventure of Nebulandia",
+            "english": "One Piece: Adventure of Nebulandia"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 21831,
+          "title": {
+            "romaji": "ONE PIECE: Heart of Gold",
+            "english": "One Piece: Heart of Gold"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SUMMARY",
+        "node": {
+          "id": 99302,
+          "title": {
+            "romaji": "ONE PIECE: Episode of East Blue - Luffy to 4-nin no Nakama no Daibouken",
+            "english": "One Piece: Episode of East Blue"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 459,
+          "title": {
+            "romaji": "ONE PIECE (Movie)",
+            "english": "ONE PIECE: The Movie"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 460,
+          "title": {
+            "romaji": "ONE PIECE: Nejimaki-jima no Bouken",
+            "english": "One Piece: Clockwork Island Adventure"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 461,
+          "title": {
+            "romaji": "ONE PIECE: Chinjuu-jima no Chopper Oukoku",
+            "english": "One Piece: Chopper’s Kingdom on the Island of Strange Animals"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 462,
+          "title": {
+            "romaji": "ONE PIECE THE MOVIE: Dead End no Bouken",
+            "english": "One Piece The Movie: The Dead End Adventure"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 463,
+          "title": {
+            "romaji": "ONE PIECE: Norowareta Seiken",
+            "english": "One Piece: The Curse of the Sacred Sword"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 464,
+          "title": {
+            "romaji": "ONE PIECE THE MOVIE: Omatsuri Danshaku to Himitsu no Shima",
+            "english": "One Piece: Baron Omatsuri and the Secret Island"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 465,
+          "title": {
+            "romaji": "ONE PIECE THE MOVIE: Karakuri-jou no Mecha Kyohei",
+            "english": "One Piece: Mega Mecha Soldier of Karakuri Castle"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SUMMARY",
+        "node": {
+          "id": 2107,
+          "title": {
+            "romaji": "ONE PIECE: Episode of Alabasta - Sabaku no Oujo to Kaizoku-tachi",
+            "english": "One Piece: The Desert Princess and the Pirates, Adventures in Alabasta"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SUMMARY",
+        "node": {
+          "id": 3848,
+          "title": {
+            "romaji": "ONE PIECE THE MOVIE: Episode of Chopper Plus - Fuyu ni Saku, Kiseki no Sakura",
+            "english": "One Piece: Episode Of Chopper +: The Miracle Winter Cherry Blossom"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 4155,
+          "title": {
+            "romaji": "ONE PIECE FILM: STRONG WORLD",
+            "english": "One Piece Film: Strong World"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 9999,
+          "title": {
+            "romaji": "ONE PIECE 3D: Mugiwara Chase",
+            "english": "One Piece 3D: Mugiwara Chase"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 12859,
+          "title": {
+            "romaji": "ONE PIECE FILM: Z",
+            "english": "One Piece Film: Z"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 21335,
+          "title": {
+            "romaji": "ONE PIECE FILM: GOLD",
+            "english": "One Piece Film: Gold"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "ADAPTATION",
+        "node": {
+          "id": 96427,
+          "title": {
+            "romaji": "ONE PIECE: Loguetown-hen",
+            "english": null
+          },
+          "type": "MANGA",
+          "format": "NOVEL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "ADAPTATION",
+        "node": {
+          "id": 30013,
+          "title": {
+            "romaji": "ONE PIECE",
+            "english": "One Piece"
+          },
+          "type": "MANGA",
+          "format": "MANGA",
+          "status": "RELEASING"
+        }
+      },
+      {
+        "relationType": "SUMMARY",
+        "node": {
+          "id": 101918,
+          "title": {
+            "romaji": "ONE PIECE: Episode of Sorajima",
+            "english": "One Piece: Episode of Skypiea"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 8740,
+          "title": {
+            "romaji": "ONE PIECE FILM: STRONG WORLD - EPISODE:0",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "OVA",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 105143,
+          "title": {
+            "romaji": "ONE PIECE STAMPEDE",
+            "english": "One Piece: Stampede"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "CHARACTER",
+        "node": {
+          "id": 102639,
+          "title": {
+            "romaji": "Nissan SERENA x One Piece: Sennyuu Sauzando Sanii-gou",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "CHARACTER",
+        "node": {
+          "id": 106492,
+          "title": {
+            "romaji": "Kyutai Panic Adventure!",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SUMMARY",
+        "node": {
+          "id": 106572,
+          "title": {
+            "romaji": "ONE PIECE: Episode of Alabasta - Sabaku no Oujo to Kaizoku-tachi",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "OTHER",
+        "node": {
+          "id": 107110,
+          "title": {
+            "romaji": "ONE PIECE: Cry heart",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "CHARACTER",
+        "node": {
+          "id": 107256,
+          "title": {
+            "romaji": "Kyutai Panic Adventure Returns!!!",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 2385,
+          "title": {
+            "romaji": "ONE PIECE: Nejimaki-jima no Bouken - Jango no Dance Carnival",
+            "english": "One Piece: Django's Dance Carnival"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "CHARACTER",
+        "node": {
+          "id": 101099,
+          "title": {
+            "romaji": "HUNGRY DAYS: Aoharu ka yo.",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 21880,
+          "title": {
+            "romaji": "ONE PIECE FILM: GOLD - episode 0 711ver.",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "ALTERNATIVE",
+        "node": {
+          "id": 5252,
+          "title": {
+            "romaji": "ONE PIECE: ROMANCE DAWN STORY",
+            "english": "One Piece: Romance Dawn Story"
+          },
+          "type": "ANIME",
+          "format": "OVA",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "ADAPTATION",
+        "node": {
+          "id": 30793,
+          "title": {
+            "romaji": "WANTED! Oda Eiichiro Tanpenshuu",
+            "english": "Wanted! Eiichiro Oda Before One Piece"
+          },
+          "type": "MANGA",
+          "format": "MANGA",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "CHARACTER",
+        "node": {
+          "id": 113308,
+          "title": {
+            "romaji": "Kinen Satsuei",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "MUSIC",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "CHARACTER",
+        "node": {
+          "id": 114761,
+          "title": {
+            "romaji": "A-RA-SHI : Reborn",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "MUSIC",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "CHARACTER",
+        "node": {
+          "id": 10033,
+          "title": {
+            "romaji": "Toriko",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "TV",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "CHARACTER",
+        "node": {
+          "id": 813,
+          "title": {
+            "romaji": "Dragon Ball Z",
+            "english": "Dragon Ball Z"
+          },
+          "type": "ANIME",
+          "format": "TV",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 126649,
+          "title": {
+            "romaji": "Tokyo One Piece Tower: Tongari Shima no Dai Hihou",
+            "english": "The Great Tongari Island Treasure Hunting Adventure"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "ADAPTATION",
+        "node": {
+          "id": 134184,
+          "title": {
+            "romaji": "Romance Dawn",
+            "english": "Romance Dawn"
+          },
+          "type": "MANGA",
+          "format": "ONE_SHOT",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 141902,
+          "title": {
+            "romaji": "ONE PIECE FILM: RED",
+            "english": "One Piece Film: Red"
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "OTHER",
+        "node": {
+          "id": 143293,
+          "title": {
+            "romaji": "One Piece: Annecy Festival 60th Anniversary",
+            "english": "One Piece: Annecy Festival 60th Anniversary"
+          },
+          "type": "ANIME",
+          "format": "ONA",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "PREQUEL",
+        "node": {
+          "id": 167404,
+          "title": {
+            "romaji": "MONSTERS: Ippaku Sanjou Hiryuu Jigoku",
+            "english": "MONSTERS: 103 Mercies Dragon Damnation"
+          },
+          "type": "ANIME",
+          "format": "ONA",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "ALTERNATIVE",
+        "node": {
+          "id": 171630,
+          "title": {
+            "romaji": "THE ONE PIECE",
+            "english": "THE ONE PIECE"
+          },
+          "type": "ANIME",
+          "format": null,
+          "status": "NOT_YET_RELEASED"
+        }
+      },
+      {
+        "relationType": "OTHER",
+        "node": {
+          "id": 177475,
+          "title": {
+            "romaji": "ONE PIECE×KAWAISOUNI! Kono Boushi wo Omae ni Azukeru",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "ONA",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 182469,
+          "title": {
+            "romaji": "ONE PIECE FAN LETTER",
+            "english": "ONE PIECE FAN LETTER"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SUMMARY",
+        "node": {
+          "id": 183423,
+          "title": {
+            "romaji": "ONE PIECE: Gyojin Tou-hen",
+            "english": "One Piece Log: Fish-Man Island Saga"
+          },
+          "type": "ANIME",
+          "format": "TV",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "CHARACTER",
+        "node": {
+          "id": 187225,
+          "title": {
+            "romaji": "LOS ANGELES LAKERS x ONE PIECE",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 188668,
+          "title": {
+            "romaji": "Koisuru ONE PIECE",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "ONA",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 197178,
+          "title": {
+            "romaji": "ONE PIECE HEROINES",
+            "english": "ONE PIECE HEROINES"
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 187380,
+          "title": {
+            "romaji": "ONE PIECE: Original Episode/Luffy, Law",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "SPECIAL",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SPIN_OFF",
+        "node": {
+          "id": 204432,
+          "title": {
+            "romaji": "CHOPPER's",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "TV_SHORT",
+          "status": "FINISHED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 215855,
+          "title": {
+            "romaji": "ONE PIECE FILM: GOD VALLEY",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "NOT_YET_RELEASED"
+        }
+      },
+      {
+        "relationType": "SIDE_STORY",
+        "node": {
+          "id": 215856,
+          "title": {
+            "romaji": "ONE PIECE FILM: BAAD",
+            "english": null
+          },
+          "type": "ANIME",
+          "format": "MOVIE",
+          "status": "NOT_YET_RELEASED"
+        }
+      }
+    ]
+  },
+  "recommendations": {
+    "nodes": [
+      {
+        "rating": 2181,
+        "mediaRecommendation": {
+          "id": 11061,
+          "title": {
+            "romaji": "HUNTER×HUNTER (2011)",
+            "english": "Hunter x Hunter (2011)"
+          },
+          "type": "ANIME"
+        }
+      },
+      {
+        "rating": 1010,
+        "mediaRecommendation": {
+          "id": 20,
+          "title": {
+            "romaji": "NARUTO",
+            "english": "Naruto"
+          },
+          "type": "ANIME"
+        }
+      },
+      {
+        "rating": 669,
+        "mediaRecommendation": {
+          "id": 1735,
+          "title": {
+            "romaji": "NARUTO: Shippuuden",
+            "english": "Naruto: Shippuden"
+          },
+          "type": "ANIME"
+        }
+      },
+      {
+        "rating": 449,
+        "mediaRecommendation": {
+          "id": 97940,
+          "title": {
+            "romaji": "Black Clover",
+            "english": "Black Clover"
+          },
+          "type": "ANIME"
+        }
+      },
+      {
+        "rating": 390,
+        "mediaRecommendation": {
+          "id": 223,
+          "title": {
+            "romaji": "Dragon Ball",
+            "english": "Dragon Ball"
+          },
+          "type": "ANIME"
+        }
+      },
+      {
+        "rating": 245,
+        "mediaRecommendation": {
+          "id": 813,
+          "title": {
+            "romaji": "Dragon Ball Z",
+            "english": "Dragon Ball Z"
+          },
+          "type": "ANIME"
+        }
+      },
+      {
+        "rating": 222,
+        "mediaRecommendation": {
+          "id": 269,
+          "title": {
+            "romaji": "BLEACH",
+            "english": "Bleach"
+          },
+          "type": "ANIME"
+        }
+      },
+      {
+        "rating": 193,
+        "mediaRecommendation": {
+          "id": 6702,
+          "title": {
+            "romaji": "FAIRY TAIL",
+            "english": "Fairy Tail"
+          },
+          "type": "ANIME"
+        }
+      },
+      {
+        "rating": 117,
+        "mediaRecommendation": {
+          "id": 5114,
+          "title": {
+            "romaji": "Hagane no Renkinjutsushi: FULLMETAL ALCHEMIST",
+            "english": "Fullmetal Alchemist: Brotherhood"
+          },
+          "type": "ANIME"
+        }
+      },
+      {
+        "rating": 94,
+        "mediaRecommendation": {
+          "id": 116674,
+          "title": {
+            "romaji": "BLEACH: Sennen Kessen-hen",
+            "english": "BLEACH: Thousand-Year Blood War"
+          },
+          "type": "ANIME"
+        }
+      }
+    ]
+  },
+  "reviews": {
+    "nodes": [
+      {
+        "id": 5881,
+        "score": 98,
+        "summary": "One Piece is a great adventure series, with a lovable cast of characters.",
+        "siteUrl": "https://anilist.co/review/5881"
+      },
+      {
+        "id": 5534,
+        "score": 90,
+        "summary": "A really fun adventure comprised of a wacky crew...",
+        "siteUrl": "https://anilist.co/review/5534"
+      },
+      {
+        "id": 13278,
+        "score": 45,
+        "summary": "One Piece: Forced to Enjoy?",
+        "siteUrl": "https://anilist.co/review/13278"
+      },
+      {
+        "id": 12434,
+        "score": 98,
+        "summary": "The Greatest Adventure Story of All Time",
+        "siteUrl": "https://anilist.co/review/12434"
+      },
+      {
+        "id": 7481,
+        "score": 100,
+        "summary": "Why One Piece is my favorite Anime of all time",
+        "siteUrl": "https://anilist.co/review/7481"
+      }
+    ]
+  },
+  "externalLinks": [
+    {
+      "url": "http://www.crunchyroll.com/one-piece",
+      "site": "Crunchyroll",
+      "type": "STREAMING",
+      "language": null
+    },
+    {
+      "url": "https://one-piece.com/",
+      "site": "Official Site",
+      "type": "INFO",
+      "language": "Japanese"
+    },
+    {
+      "url": "http://www.hulu.com/one-piece",
+      "site": "Hulu",
+      "type": "STREAMING",
+      "language": null
+    },
+    {
+      "url": "https://www.netflix.com/title/80107103",
+      "site": "Netflix",
+      "type": "STREAMING",
+      "language": null
+    },
+    {
+      "url": "https://www.bilibili.tv/media/37976",
+      "site": "Bilibili TV",
+      "type": "STREAMING",
+      "language": null
+    },
+    {
+      "url": "https://www.iq.com/album/1bk9icvr331",
+      "site": "iQ",
+      "type": "STREAMING",
+      "language": null
+    },
+    {
+      "url": "https://wetv.vip/en/play/tnfk3rniubz3m8o",
+      "site": "WeTV",
+      "type": "STREAMING",
+      "language": null
+    },
+    {
+      "url": "https://twitter.com/Eiichiro_Staff/",
+      "site": "Twitter",
+      "type": "SOCIAL",
+      "language": "Japanese"
+    },
+    {
+      "url": "https://www.youtube.com/@onepieceofficial",
+      "site": "YouTube",
+      "type": "STREAMING",
+      "language": null
+    },
+    {
+      "url": "https://www.hoopladigital.com/series/one-piece/14153295320",
+      "site": "Hoopla",
+      "type": "STREAMING",
+      "language": null
+    },
+    {
+      "url": "https://www.instagram.com/onepiece_staff/",
+      "site": "Instagram",
+      "type": "SOCIAL",
+      "language": "Japanese"
+    },
+    {
+      "url": "https://www.youtube.com/@OnePieceOfficialENG",
+      "site": "YouTube",
+      "type": "STREAMING",
+      "language": null
+    },
+    {
+      "url": "https://one-piece.com/op/links_eng/",
+      "site": "Official Site",
+      "type": "INFO",
+      "language": "English"
+    },
+    {
+      "url": "https://www.tiktok.com/@onepiece.staff.official",
+      "site": "TikTok",
+      "type": "SOCIAL",
+      "language": "Japanese"
+    }
+  ],
+  "streamingEpisodes": [
+    {
+      "title": "Episode 130 - Scent of Danger! the Seventh Member Is Nico Robin!",
+      "url": "http://www.crunchyroll.com/watch/G8WUNGWKG/scent-of-danger-the-seventh-member-is-nico-robin",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 129 - It All Started On That Day! Vivi Tells the Story of Her Adventure!",
+      "url": "http://www.crunchyroll.com/watch/GPWUKZ53G/it-all-started-on-that-day-vivi-tells-the-story-of-her-adventure",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 128 - The Pirates' Banquet and Operation Escape from Alabasta!",
+      "url": "http://www.crunchyroll.com/watch/G31UXW35G/the-pirates-banquet-and-operation-escape-from-alabasta",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 127 - A Farewell to Arms! Pirates and Different Ideas of Justice!",
+      "url": "http://www.crunchyroll.com/watch/GK9U3M495/a-farewell-to-arms-pirates-and-different-ideas-of-justice",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 126 - I Will Surpass You! Rain Falls in Alabasta!",
+      "url": "http://www.crunchyroll.com/watch/GN7UD278G/i-will-surpass-you-rain-falls-in-alabasta",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 125 - Magnificent Wings! My Name Is Pell, Guardian Deity of the Country!",
+      "url": "http://www.crunchyroll.com/watch/G14U49EKX/magnificent-wings-my-name-is-pell-guardian-deity-of-the-country",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 124 - The Nightmare Draws Near! This Is the Sand-Sand Clan's Secret Base!",
+      "url": "http://www.crunchyroll.com/watch/GX9UQJ7VN/the-nightmare-draws-near-this-is-the-sand-sand-clans-secret-base",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 123 - That Looks Croc-ish! Luffy, Run to the Royal Tomb!",
+      "url": "http://www.crunchyroll.com/watch/G7PU4MVGN/that-looks-croc-ish-luffy-run-to-the-royal-tomb",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 122 - Sand Croc and Water Luffy! the Second Round of the Duel!",
+      "url": "http://www.crunchyroll.com/watch/GG1U24EK2/sand-croc-and-water-luffy-the-second-round-of-the-duel",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 121 - Where Vivi's Voice Gets Heard! the Hero Descends!",
+      "url": "http://www.crunchyroll.com/watch/G7PU4MVEW/where-vivis-voice-gets-heard-the-hero-descends",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 120 - The Battle Is Over! Koza Raises the White Flag!",
+      "url": "http://www.crunchyroll.com/watch/GWDU8EK43/the-battle-is-over-koza-raises-the-white-flag",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 119 - Secret of Powerful Swordplay! Ability to Cut Steel and the Rhythm Things Have!",
+      "url": "http://www.crunchyroll.com/watch/GQJUGV9XN/secret-of-powerful-swordplay-ability-to-cut-steel-and-the-rhythm-things-have",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 118 - Secret Passed Down in the Royal Family! the Ancient Weapon Pluton!",
+      "url": "http://www.crunchyroll.com/watch/GZ7UV2X5E/secret-passed-down-in-the-royal-family-the-ancient-weapon-pluton",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 117 - Nami's Cyclone Advisory! Clima Takt Burst!",
+      "url": "http://www.crunchyroll.com/watch/G2XU043PD/namis-cyclone-advisory-clima-takt-burst",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 116 - Transformed Into Nami! Bon Clay's Rapid-Fire Ballet Kenpo!",
+      "url": "http://www.crunchyroll.com/watch/G31UXW3JG/transformed-into-nami-bon-clays-rapid-fire-ballet-kenpo",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 115 - Big Opening Day Today! the Copy-Copy Montage!",
+      "url": "http://www.crunchyroll.com/watch/GMKUXQ4D7/big-opening-day-today-the-copy-copy-montage",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 114 - Sworn On a Friend's Dream! the Battle of Molehill, Block 4!",
+      "url": "http://www.crunchyroll.com/watch/GN7UD273G/sworn-on-a-friends-dream-the-battle-of-molehill-block-4",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 113 - Alubarna Grieves! the Fierce Captain Karoo!",
+      "url": "http://www.crunchyroll.com/watch/G14U49EZX/alubarna-grieves-the-fierce-captain-karoo",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 112 - Rebel Army Vs. Royal Army! Showdown at Alubarna!",
+      "url": "http://www.crunchyroll.com/watch/GEVUZXGMP/rebel-army-vs-royal-army-showdown-at-alubarna",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 111 - Dash for a Miracle! Alabasta Animal Land!",
+      "url": "http://www.crunchyroll.com/watch/G9DUE5PVK/dash-for-a-miracle-alabasta-animal-land",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 110 - Merciless Mortal Combat! Luffy Vs. Crocodile!",
+      "url": "http://www.crunchyroll.com/watch/G7PU4MVNN/merciless-mortal-combat-luffy-vs-crocodile",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 109 - The Key to a Great Comeback Escape! the Wax-Wax Ball!",
+      "url": "http://www.crunchyroll.com/watch/G0DUND0EM/the-key-to-a-great-comeback-escape-the-wax-wax-ball",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 108 - The Terrifying Banana Gators and Mr. Prince!",
+      "url": "http://www.crunchyroll.com/watch/GWDU8EKZ3/the-terrifying-banana-gators-and-mr-prince",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 107 - Operation Utopia Commences! the Swell of Rebellion Stirs!",
+      "url": "http://www.crunchyroll.com/watch/G0DUND0PQ/operation-utopia-commences-the-swell-of-rebellion-stirs",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 106 - The Trap of Certain Defeat! Storming Raindinners!",
+      "url": "http://www.crunchyroll.com/watch/G50UZX43N/the-trap-of-certain-defeat-storming-raindinners",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 105 - The Battlefront of Alabasta! Rainbase, the City of Dreams!",
+      "url": "http://www.crunchyroll.com/watch/GZ7UV2X9E/the-battlefront-of-alabasta-rainbase-the-city-of-dreams",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 104 - Luffy Vs. Vivi! the Tearful Vow to Put Friends On the Line!",
+      "url": "http://www.crunchyroll.com/watch/GG1U24E9K/luffy-vs-vivi-the-tearful-vow-to-put-friends-on-the-line",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 103 - Spider's Cafe at 8 O'Clock! the Enemy Leaders Gather!",
+      "url": "http://www.crunchyroll.com/watch/GPWUKZ5MG/spiders-cafe-at-8-oclock-the-enemy-leaders-gather",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 102 - Ruins and Lost Ways! Vivi, Her Friends and the Country's Form!",
+      "url": "http://www.crunchyroll.com/watch/G31UXW38G/ruins-and-lost-ways-vivi-her-friends-and-the-countrys-form",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 101 - Showdown in a Heat Haze! Ace Vs. the Gallant Scorpion!",
+      "url": "http://www.crunchyroll.com/watch/GVWU0WZ1E/showdown-in-a-heat-haze-ace-vs-the-gallant-scorpion",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 100 - Rebel Warrior Koza! the Dream Vowed to Vivi!",
+      "url": "http://www.crunchyroll.com/watch/GMKUXQ407/rebel-warrior-koza-the-dream-vowed-to-vivi",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 99 - False Fortitude! Camu, Rebel Soldier at Heart!",
+      "url": "http://www.crunchyroll.com/watch/G0DUND0N5/false-fortitude-camu-rebel-soldier-at-heart",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 98 - Enter the Desert Pirates! the Men Who Live Freely!",
+      "url": "http://www.crunchyroll.com/watch/G50UZX4ZE/enter-the-desert-pirates-the-men-who-live-freely",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 97 - Adventure in the Country of Sand! the Monsters That Live in the Scorching Land!",
+      "url": "http://www.crunchyroll.com/watch/GQJUGV9GD/adventure-in-the-country-of-sand-the-monsters-that-live-in-the-scorching-land",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 96 - Erumalu, the City of Green and the Kung Fu Dugongs!",
+      "url": "http://www.crunchyroll.com/watch/GD9UVQWV4/erumalu-the-city-of-green-and-the-kung-fu-dugongs",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 95 - Ace and Luffy! Hot Emotions and Brotherly Bonds!",
+      "url": "http://www.crunchyroll.com/watch/G8WUNGWNQ/ace-and-luffy-hot-emotions-and-brotherly-bonds",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 94 - The Heroes' Reunion! His Name Is Fire Fist Ace!",
+      "url": "http://www.crunchyroll.com/watch/G2XU04309/the-heroes-reunion-his-name-is-fire-fist-ace",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 93 - Off to the Desert Kingdom! the Rain-Summoning Powder and the Rebel Army!",
+      "url": "http://www.crunchyroll.com/watch/GWDU8EKXZ/off-to-the-desert-kingdom-the-rain-summoning-powder-and-the-rebel-army",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 92 - Alabasta's Hero and a Ballerina On the Ship!",
+      "url": "http://www.crunchyroll.com/watch/G50UZX4PG/alabastas-hero-and-a-ballerina-on-the-ship",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 91 - Goodbye Drum Island! I'm Going Out to Sea!",
+      "url": "http://www.crunchyroll.com/watch/GPWUKZ5K8/goodbye-drum-island-im-going-out-to-sea",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 90 - Hiriluk's Cherry Blossoms! Miracle in the Drum Rockies!",
+      "url": "http://www.crunchyroll.com/watch/GJWU29X10/hiriluks-cherry-blossoms-miracle-in-the-drum-rockies",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 89 - When the Kingdom's Rule Ends! the Flag of Faith Flies Forever!",
+      "url": "http://www.crunchyroll.com/watch/GX9UQJ740/when-the-kingdoms-rule-ends-the-flag-of-faith-flies-forever",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 88 - Zoan-type Devil Fruit! Chopper's Seven-form Transformation!",
+      "url": "http://www.crunchyroll.com/watch/G7PU4MVDE/zoan-type-devil-fruit-choppers-seven-form-transformation",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 87 - Fight Wapol's Crew! the Power of the Munch Munch Fruit!",
+      "url": "http://www.crunchyroll.com/watch/G0DUND0X5/fight-wapols-crew-the-power-of-the-munch-munch-fruit",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 86 - Hiriluk's Cherry Blossoms and the Will That Gets Carried On!",
+      "url": "http://www.crunchyroll.com/watch/GG1U24EV0/hiriluks-cherry-blossoms-and-the-will-that-gets-carried-on",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 85 - An Outcast's Dream! Hiriluk the Quack!",
+      "url": "http://www.crunchyroll.com/watch/G50UZX4DE/an-outcasts-dream-hiriluk-the-quack",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 84 - Blue-nosed Reindeer! Chopper's Secret!",
+      "url": "http://www.crunchyroll.com/watch/GD9UVQWG4/blue-nosed-reindeer-choppers-secret",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 83 - The Island Where Snow Lives! Climb the Drum Rockies!",
+      "url": "http://www.crunchyroll.com/watch/G8WUNGWPQ/the-island-where-snow-lives-climb-the-drum-rockies",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 82 - Dalton's Resolve! Wapol's Corps Land On the Island!",
+      "url": "http://www.crunchyroll.com/watch/GPWUKZ5X8/daltons-resolve-wapols-corps-land-on-the-island",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 81 - Are You Happy? the Doctor Called Witch!",
+      "url": "http://www.crunchyroll.com/watch/GMKUXQ43M/are-you-happy-the-doctor-called-witch",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 80 - An Island Without Doctors? Adventure in a Nameless Land!",
+      "url": "http://www.crunchyroll.com/watch/GJWU29X70/an-island-without-doctors-adventure-in-a-nameless-land",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 79 - A Raid! the Tin Tyrant and Tin Plate Wapol!",
+      "url": "http://www.crunchyroll.com/watch/G14U49EJ9/a-raid-the-tin-tyrant-and-tin-plate-wapol",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 78 - Nami's Sick? Beyond the Snow Falling On the Stars!",
+      "url": "http://www.crunchyroll.com/watch/G4VUQ1X08/namis-sick-beyond-the-snow-falling-on-the-stars",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 77 - Farewell Giant Island! Head for Alabasta!",
+      "url": "http://www.crunchyroll.com/watch/G9DUE5PN8/farewell-giant-island-head-for-alabasta",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 76 - Time to Fight Back! Usopp's Quick Thinking and Fire Star!",
+      "url": "http://www.crunchyroll.com/watch/GEVUZXG32/time-to-fight-back-usopps-quick-thinking-and-fire-star",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 75 - A Hex On Luffy! Colors Trap!",
+      "url": "http://www.crunchyroll.com/watch/GG1U24E50/a-hex-on-luffy-colors-trap",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 74 - The Devilish Candle! Tears of Regret and Tears of Anger!",
+      "url": "http://www.crunchyroll.com/watch/GQJUGV90D/the-devilish-candle-tears-of-regret-and-tears-of-anger",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 73 - Broggy's Bitter Tears of Victory! The Conclusion of Elbaf!",
+      "url": "http://www.crunchyroll.com/watch/G31UXW3EX/broggys-bitter-tears-of-victory-the-conclusion-of-elbaf",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 72 - Luffy Gets Angry! a Dirty Trick Violates the Sacred Duel!",
+      "url": "http://www.crunchyroll.com/watch/GVWU0WZX2/luffy-gets-angry-a-dirty-trick-violates-the-sacred-duel",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 71 - Huge Duel! the Giants Dorry and Broggy!",
+      "url": "http://www.crunchyroll.com/watch/GMKUXQ4MM/huge-duel-the-giants-dorry-and-broggy",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 70 - An Ancient Island! the Shadow Hiding in Little Garden!",
+      "url": "http://www.crunchyroll.com/watch/GK9U3M42V/an-ancient-island-the-shadow-hiding-in-little-garden",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 69 - Coby and Helmeppo's Resolve! Vice-Admiral Garp's Parental Affection!",
+      "url": "http://www.crunchyroll.com/watch/GJWU29XN0/coby-and-helmeppos-resolve-vice-admiral-garps-parental-affection",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 68 - Try Hard, Coby! Coby and Helmeppo's Struggles in the Marines!",
+      "url": "http://www.crunchyroll.com/watch/G4VUQ1XK8/try-hard-coby-coby-and-helmeppos-struggles-in-the-marines",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 67 - Deliver Princess Vivi! the Luffy Pirates Set Sail!",
+      "url": "http://www.crunchyroll.com/watch/GX9UQJ710/deliver-princess-vivi-the-luffy-pirates-set-sail",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 66 - All-out Battle! Luffy Vs. Zoro, Mysterious Grand Duel!",
+      "url": "http://www.crunchyroll.com/watch/G9DUE5PZ8/all-out-battle-luffy-vs-zoro-mysterious-grand-duel",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 65 - Explosion! the Three Swords Style! Zoro Vs. Baroque Works!",
+      "url": "http://www.crunchyroll.com/watch/G7PU4MVPE/explosion-the-three-swords-style-zoro-vs-baroque-works",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 64 - A Town That Welcomes Pirates? Setting Foot On Whisky Peak!",
+      "url": "http://www.crunchyroll.com/watch/GEVUZXGJ2/a-town-that-welcomes-pirates-setting-foot-on-whisky-peak",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 63 - A Promise Between Men! Luffy and the Whale Vow to Meet Again!",
+      "url": "http://www.crunchyroll.com/watch/G0DUND0G5/a-promise-between-men-luffy-and-the-whale-vow-to-meet-again",
+      "site": "Crunchyroll"
+    },
+    {
+      "title": "Episode 62 - The First Line of Defense? the Giant Whale Laboon Appears!",
+      "url": "http://www.crunchyroll.com/watch/GG1U24EW0/the-first-line-of-defense-the-giant-whale-laboon-appears",
+      "site": "Crunchyroll"
+    }
+  ],
+  "rankings": [
+    {
+      "rank": 27,
+      "type": "RATED",
+      "context": "highest rated all time",
+      "year": null,
+      "season": null,
+      "allTime": true
+    },
+    {
+      "rank": 8,
+      "type": "POPULAR",
+      "context": "most popular all time",
+      "year": null,
+      "season": null,
+      "allTime": true
+    },
+    {
+      "rank": 1,
+      "type": "RATED",
+      "context": "highest rated",
+      "year": 1999,
+      "season": null,
+      "allTime": false
+    },
+    {
+      "rank": 1,
+      "type": "POPULAR",
+      "context": "most popular",
+      "year": 1999,
+      "season": null,
+      "allTime": false
+    }
+  ],
+  "airingSchedule": {
+    "nodes": [
+      {
+        "episode": 1177,
+        "airingAt": 1788704160,
+        "timeUntilAiring": 36754
+      },
+      {
+        "episode": 1178,
+        "airingAt": 1789308960,
+        "timeUntilAiring": 641554
+      },
+      {
+        "episode": 1179,
+        "airingAt": 1789913760,
+        "timeUntilAiring": 1246354
+      },
+      {
+        "episode": 1180,
+        "airingAt": 1790518560,
+        "timeUntilAiring": 1851154
+      },
+      {
+        "episode": 1181,
+        "airingAt": 1791123360,
+        "timeUntilAiring": 2455954
+      },
+      {
+        "episode": 1182,
+        "airingAt": 1791728160,
+        "timeUntilAiring": 3060754
+      },
+      {
+        "episode": 1183,
+        "airingAt": 1792332960,
+        "timeUntilAiring": 3665554
+      },
+      {
+        "episode": 1184,
+        "airingAt": 1792937760,
+        "timeUntilAiring": 4270354
+      },
+      {
+        "episode": 1185,
+        "airingAt": 1793542560,
+        "timeUntilAiring": 4875154
+      },
+      {
+        "episode": 1186,
+        "airingAt": 1794147360,
+        "timeUntilAiring": 5479954
+      },
+      {
+        "episode": 1187,
+        "airingAt": 1794752160,
+        "timeUntilAiring": 6084754
+      },
+      {
+        "episode": 1188,
+        "airingAt": 1795356960,
+        "timeUntilAiring": 6689554
+      },
+      {
+        "episode": 1189,
+        "airingAt": 1795961760,
+        "timeUntilAiring": 7294354
+      },
+      {
+        "episode": 1190,
+        "airingAt": 1796566560,
+        "timeUntilAiring": 7899154
+      },
+      {
+        "episode": 1191,
+        "airingAt": 1797171360,
+        "timeUntilAiring": 8503954
+      },
+      {
+        "episode": 1192,
+        "airingAt": 1797776160,
+        "timeUntilAiring": 9108754
+      },
+      {
+        "episode": 1193,
+        "airingAt": 1798380960,
+        "timeUntilAiring": 9713554
+      },
+      {
+        "episode": 1194,
+        "airingAt": 1798985760,
+        "timeUntilAiring": 10318354
+      },
+      {
+        "episode": 1195,
+        "airingAt": 1799590560,
+        "timeUntilAiring": 10923154
+      },
+      {
+        "episode": 1196,
+        "airingAt": 1800195360,
+        "timeUntilAiring": 11527954
+      },
+      {
+        "episode": 1197,
+        "airingAt": 1800800160,
+        "timeUntilAiring": 12132754
+      },
+      {
+        "episode": 1198,
+        "airingAt": 1801404960,
+        "timeUntilAiring": 12737554
+      },
+      {
+        "episode": 1199,
+        "airingAt": 1802009760,
+        "timeUntilAiring": 13342354
+      },
+      {
+        "episode": 1200,
+        "airingAt": 1802614560,
+        "timeUntilAiring": 13947154
+      },
+      {
+        "episode": 1201,
+        "airingAt": 1803219360,
+        "timeUntilAiring": 14551954
+      }
+    ]
+  },
+  "trending": 119,
+  "stats": {
+    "scoreDistribution": [
+      {
+        "score": 10,
+        "amount": 3576
+      },
+      {
+        "score": 20,
+        "amount": 955
+      },
+      {
+        "score": 30,
+        "amount": 1563
+      },
+      {
+        "score": 40,
+        "amount": 2554
+      },
+      {
+        "score": 50,
+        "amount": 5445
+      },
+      {
+        "score": 60,
+        "amount": 8379
+      },
+      {
+        "score": 70,
+        "amount": 20533
+      },
+      {
+        "score": 80,
+        "amount": 35618
+      },
+      {
+        "score": 90,
+        "amount": 74024
+      },
+      {
+        "score": 100,
+        "amount": 136379
+      }
+    ],
+    "statusDistribution": [
+      {
+        "status": "CURRENT",
+        "amount": 476750
+      },
+      {
+        "status": "PLANNING",
+        "amount": 91848
+      },
+      {
+        "status": "COMPLETED",
+        "amount": 42254
+      },
+      {
+        "status": "DROPPED",
+        "amount": 47942
+      },
+      {
+        "status": "PAUSED",
+        "amount": 89286
+      }
+    ]
+  },
+  "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
+  "hashtag": "#ONEPIECE",
+  "updatedAt": 1788667208,
+  "isLicensed": true,
+  "seasonInt": 994,
+  "trailer": null
+}

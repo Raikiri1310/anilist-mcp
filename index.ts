@@ -70,7 +70,7 @@ function parseConfig(req: Request) {
 function createServer({ config }: { config: z.infer<typeof ConfigSchema> }) {
   const server = new McpServer({
     name: "anilist-mcp",
-    version: "1.4.0",
+    version: "2.0.0",
   });
 
   // Two clients on purpose. anilist-node sends Authorization on every request
@@ -79,8 +79,10 @@ function createServer({ config }: { config: z.infer<typeof ConfigSchema> }) {
   // read tool, not just the authenticated ones. Public reads therefore go
   // through an anonymous client and cannot be broken by a bad token; only the
   // [Requires Login] tools use the authenticated one, and they already gate on
-  // requireAuth(). The only thing lost is that get_anime/get_manga with
-  // fullData: true no longer carry the viewer's own mediaListEntry/isFavourite.
+  // requireAuth(). get_anime/get_manga bypass both clients — they call
+  // getMediaDirect with config.anilistToken directly, which is only sent to
+  // AniList when `include` contains "viewer", so a stale token can't break
+  // them either.
   const anilist = new AniList();
   const anilistAuthed = config.anilistToken
     ? new AniList(config.anilistToken)

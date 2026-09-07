@@ -1,6 +1,6 @@
 {
   "name": "anilist-mcp",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "mcpName": "io.github.yuna0x0/anilist-mcp",
   "description": "AniList MCP server for accessing AniList API data",
   "type": "module",
@@ -32,7 +32,8 @@
     "pack:mcpb": "pnpm install --shamefully-hoist && mcpb pack",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "sync-schema": "tsx scripts/sync-schema.ts"
   },
   "keywords": [
     "ai",
